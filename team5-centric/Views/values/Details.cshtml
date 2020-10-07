@@ -1,0 +1,50 @@
+﻿@model team5_centric.Models.values
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>values</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.valueName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.valueName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.valueDescription)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.valueDescription)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.valueIcon)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.valueIcon)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.valueWeight)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.valueWeight)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.valueId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
