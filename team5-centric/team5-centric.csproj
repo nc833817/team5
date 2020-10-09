@@ -192,12 +192,20 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\img\home-bg.jpg" />
+    <Content Include="Content\img\logo-sm.png" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="js\app.js" />
+    <Content Include="js\lib\stats.js" />
+    <Content Include="js\particles.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="js\bower.json" />
+    <Content Include="js\package.json" />
+    <Content Include="js\particles.json" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -259,6 +267,7 @@
     <Content Include="Views\userDatas\Edit.cshtml" />
     <Content Include="Views\userDatas\Index.cshtml" />
     <Content Include="Views\userDatas\duplicateUser.cshtml" />
+    <Content Include="Views\Shared\homeLayout.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
