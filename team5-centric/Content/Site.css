@@ -40,6 +40,7 @@ canvas {
 
 .navbar-inverse .navbar-nav > li > a:hover, .navbar-inverse .navbar-nav > li > a {
     color: #2f2f2f;
+    font-family: 'Roboto', sans-serif;
 }
     .navbar-inverse .navbar-nav > li > a:hover, .navbar-inverse .navbar-nav > li > a:focus {
         color: #0d0d0d;
@@ -48,7 +49,15 @@ canvas {
         color: #0d0d0d;
     }
 
-
+.navbar-inverse .navbar-toggle .icon-bar {
+    background-color: #3e1b4c;
+}
+.navbar-inverse .navbar-toggle:hover {
+    background-color: #fff;
+}
+.navbar-inverse .navbar-collapse, .navbar-inverse .navbar-form {
+    border-color: #d3d3d3;
+}
 .centric-logo {
     max-height: 30px;
     margin-top: 10px;
