@@ -2,19 +2,32 @@
     ViewBag.Title = "Home Page";
     Layout = "~/Views/Shared/homeLayout.cshtml";
 }
-<div id="landing-container">
-    
+
+
     <div id="particles-js">
-        <!--Content here-->
+
+    </div>
+    <div id="landing-content">
+        <div class="row vcenter">
+            <div class="col-lg-12 typetext">
+                <div class="thick-line"></div>
+                <h1>
+                    Values that kepp us 
+                </h1>
+                <h1>
+                    <a href="" class="typewrite" data-period="2000" data-type='[ "Connected", "Inclusive", "Productive", "Successful" ]'>
+                        <span class="wrap"></span>
+                    </a>
+                </h1>
+            </div>
+        </div>
     </div>
 
-   
-    <script src="../js/particles.js"></script>
-    <script src="../js/app.js"></script>
+    <script src="../Content/particles.js"></script>
+    <script src="../Content/app.js"></script>
 
-    
-    
-</div>
+
+
 
 
 <div class="jumbotron">
@@ -42,3 +55,61 @@
         <p><a class="btn btn-default" href="https://centricconsulting.com/about-us/how-we-work/">Learn more what we do &raquo;</a></p>
     </div>
 </div>
+<script type="text/javascript">
+    var TxtType = function (el, toRotate, period) {
+        this.toRotate = toRotate;
+        this.el = el;
+        this.loopNum = 0;
+        this.period = parseInt(period, 10) || 2000;
+        this.txt = '';
+        this.tick();
+        this.isDeleting = false;
+    };
+
+    TxtType.prototype.tick = function () {
+        var i = this.loopNum % this.toRotate.length;
+        var fullTxt = this.toRotate[i];
+
+        if (this.isDeleting) {
+            this.txt = fullTxt.substring(0, this.txt.length - 1);
+        } else {
+            this.txt = fullTxt.substring(0, this.txt.length + 1);
+        }
+
+        this.el.innerHTML = '<span class="wrap">' + this.txt + '</span>';
+
+        var that = this;
+        var delta = 200 - Math.random() * 100;
+
+        if (this.isDeleting) { delta /= 2; }
+
+        if (!this.isDeleting && this.txt === fullTxt) {
+            delta = this.period;
+            this.isDeleting = true;
+        } else if (this.isDeleting && this.txt === '') {
+            this.isDeleting = false;
+            this.loopNum++;
+            delta = 500;
+        }
+
+        setTimeout(function () {
+            that.tick();
+        }, delta);
+    };
+
+    window.onload = function () {
+        var elements = document.getElementsByClassName('typewrite');
+        for (var i = 0; i < elements.length; i++) {
+            var toRotate = elements[i].getAttribute('data-type');
+            var period = elements[i].getAttribute('data-period');
+            if (toRotate) {
+                new TxtType(elements[i], JSON.parse(toRotate), period);
+            }
+        }
+        // INJECT CSS
+        var css = document.createElement("style");
+        css.type = "text/css";
+        css.innerHTML = ".typewrite > .wrap { border-right: 0.08em solid #fff}";
+        document.body.appendChild(css);
+    };
+</script>

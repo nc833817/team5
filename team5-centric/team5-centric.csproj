@@ -198,14 +198,14 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
-    <Content Include="js\app.js" />
-    <Content Include="js\lib\stats.js" />
-    <Content Include="js\particles.js" />
+    <Content Include="Content\app.js" />
+    <Content Include="Content\lib\stats.js" />
+    <Content Include="Content\particles.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <Content Include="js\bower.json" />
-    <Content Include="js\package.json" />
-    <Content Include="js\particles.json" />
+    <Content Include="Content\bower.json" />
+    <Content Include="Content\package.json" />
+    <Content Include="Content\particles.json" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -271,6 +271,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="js\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
