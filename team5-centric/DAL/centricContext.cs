@@ -11,7 +11,7 @@ namespace team5_centric.DAL
     {
         public centricContext() : base ("name=DefaultConnection")
         {
-            Database.SetInitializer(new MigrateDatabaseToLatestVersion<centricContext, team5_centric.Migrations.MISContext.Configuration>("DefaultConnection"));
+            Database.SetInitializer(new MigrateDatabaseToLatestVersion<centricContext, team5_centric.Migrations.centricContext.Configuration>("DefaultConnection"));
         }
     
         public DbSet<values> values { get; set; }

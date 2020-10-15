@@ -1,5 +1,4 @@
-﻿using Microsoft.AspNet.Identity;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
@@ -52,20 +51,9 @@ namespace team5_centric.Controllers
         {
             if (ModelState.IsValid)
             {
-                //userData.userId = Guid.NewGuid();
-                Guid memberID;
-                Guid.TryParse(User.Identity.GetUserId(), out memberID);
-                userData.userId = memberID;
+                userData.userId = Guid.NewGuid();
                 db.userDatas.Add(userData);
-                try
-                {
-                    db.SaveChanges();
-                }
-                catch (Exception ex)
-                {
-                    return View("duplicateUser");
-                }
-                
+                db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
