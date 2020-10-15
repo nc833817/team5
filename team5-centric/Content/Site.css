@@ -129,6 +129,39 @@ canvas {
 
     background: #fbb823;
 }
+.typetext h3 {
+    color: #fff !important;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+    margin-top: 60px;
+    max-width: 600px;
+    font-size: 20px;
+}
+
+.rec-btn {
+    color: #2c1c5d;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 900;
+    padding: 15px 30px;
+    background: #fbb823;
+    margin-top: 30px !important;
+    display: table;
+    font-size: 18px;
+    text-decoration: none;
+    transition: all 0.5s;
+}
+    .rec-btn:hover {
+        background: #fff;
+        color: #2c1c5d;
+        text-decoration: none;
+        transition: all 0.5s;
+    }
+    .rec-btn:active {
+        background: #fff;
+        color: #2c1c5d;
+        text-decoration: none;
+        transition: all 0.5s;
+    }
 
 @media only screen and (min-width: 1200px) {
     .typetext h1 {
