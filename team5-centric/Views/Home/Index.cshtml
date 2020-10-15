@@ -3,56 +3,205 @@
     Layout = "~/Views/Shared/homeLayout.cshtml";
 }
 
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        body {
+            font-family: Helvetica;
+        }
 
-    <div id="particles-js">
+        .flip-box {
+            background-color: transparent;
+            width: 300px;
+            height: 200px;
+            border: 1px solid #f1f1f1;
+            perspective: 1000px;
+        }
 
-    </div>
-    <div id="landing-content">
-        <div class="row vcenter">
-            <div class="col-lg-12 typetext">
-                <div class="thick-line"></div>
-                <h1>
-                    Values that keep us 
-                </h1>
-                <h1>
-                    <a href="" class="typewrite" data-period="2000" data-type='[ "Connected", "Inclusive", "Productive", "Successful" ]'>
-                        <span class="wrap"></span>
-                    </a>
-                </h1>
-            </div>
+        .flip-box-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            transition: transform 0.8s;
+            transform-style: preserve-3d;
+        }
+
+        .flip-box:hover .flip-box-inner {
+            transform: rotateY(180deg);
+        }
+
+        .flip-box-front, .flip-box-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+        }
+
+        .flip-box-front {
+            background-color: #2c1c5d;
+            color: #fcba24;
+        }
+
+        .flip-box-back {
+            background-color: white;
+            color: #2c1c5d;
+            transform: rotateY(180deg);
+        }
+    </style>
+</head>
+<body>
+</body>
+</html>
+
+
+<div id="particles-js">
+
+</div>
+<div id="landing-content">
+    <div class="row vcenter">
+        <div class="col-lg-12 typetext">
+            <div class="thick-line"> </div>
+            <h1>
+                Values that keep us
+            </h1>
+            <h1>
+                <a href="" class="typewrite" data-period="2000" data-type='[ "Connected", "Inclusive", "Productive", "Successful" ]'>
+                    <span class="wrap"> </span>
+                </a>
+            </h1>
         </div>
     </div>
+</div>
 
-    <script src="~/Content/particles.js"></script>
-    <script src="~/Content/app.js"></script>
-
-
+<script src="~/Content/particles.js"></script>
+<script src="~/Content/app.js"></script>
 
 
 
 <div class="jumbotron">
-    <h1>Centric Consulting</h1>
-    <p class="lead">Welcome to Centric</p>
-    <p><a href="https://centricconsulting.com/about-us/" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
+    <h1> Centric Consulting</h1>
+    <p class="lead"> Welcome to Centric</p>
+    <p> <a href="https://centricconsulting.com/about-us/" class="btn btn-primary btn-lg"> Learn more &raquo;</a> </p>
 </div>
+
+<div class="flip-box">
+    <div class="flip-box-inner">
+        <div class="flip-box-front">
+            <h2>DELIVERY EXCELLENCE</h2>
+        </div>
+        <div class="flip-box-back">
+            <h2>Commit to Delivery Excellence.</h2>
+        </div>
+    </div>
+</div>
+
+<div class="flip-box">
+    <div class="flip-box-inner">
+        <div class="flip-box-front">
+            <h2>INTEGRITY AND OPENNESS</h2>
+        </div>
+        <div class="flip-box-back">
+            <h2>Embrace Integrity and Openness</h2>
+        </div>
+    </div>
+</div>
+
+<div class="flip-box">
+    <div class="flip-box-inner">
+        <div class="flip-box-front">
+            <h2>STEWARDSHIP</h2>
+        </div>
+        <div class="flip-box-back">
+            <h2>Practice Responsible Stewardship</h2>
+        </div>
+    </div>
+</div>
+
+<div class="flip-box">
+    <div class="flip-box-inner">
+        <div class="flip-box-front">
+            <h2>EXCEPTIONAL CULTURE</h2>
+        </div>
+        <div class="flip-box-back">
+            <h2>Invest in an Exceptional Culture</h2>
+        </div>
+    </div>
+</div>
+
+<div class="flip-box">
+    <div class="flip-box-inner">
+        <div class="flip-box-front">
+            <h2>GREATER GOOD</h2>
+        </div>
+        <div class="flip-box-back">
+            <h2>Ignite Passion for the Greater Good</h2>
+        </div>
+    </div>
+</div>
+
+<div class="flip-box">
+    <div class="flip-box-inner">
+        <div class="flip-box-front">
+            <h2>INNOVATION</h2>
+        </div>
+        <div class="flip-box-back">
+            <h2>Strive to Innovate</h2>
+        </div>
+    </div>
+</div>
+
+<div class="flip-box">
+    <div class="flip-box-inner">
+        <div class="flip-box-front">
+            <h2>BALANCE</h2>
+        </div>
+        <div class="flip-box-back">
+            <h2>Live a Balanced Life</h2>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 <div class="row">
     <div class="col-md-4">
-        <h2>Who We Are</h2>
+        <h2> Who We Are</h2>
         <p>
-            Across the United Sates, Centric has 12 locations with about a total of 600 employees. As a company we strive to create a company culture where our employees celebrate one another and build lifelong friendships. In order to achieve this company culture we promote leadership, teamwork, and  pursuing ones passion.
+            Across the United Sates, Centric has 12 locations with about a total of 600 employees. As a company we strive to create a company culture where our employees celebrate one another and build lifelong friendships. In order to achieve this company culture we promote leadership, teamwork, and pursuing ones passion.
         </p>
-        <p><a class="btn btn-default" href="https://centricconsulting.com/about-us/our-story/">Learn more who we are&raquo;</a></p>
+        <p> <a class="btn btn-default" href="https://centricconsulting.com/about-us/our-story/"> Learn more who we are&raquo;</a> </p>
     </div>
     <div class="col-md-4">
-        <h2>What We Value</h2>
-        <p>At Centric we reflect on our seven core values throughout our daily tasks and goals. The seven core values include Stewardship, Culture, Innovation, Greatergood, Integrity and openess, delivery excellence, and balance.  </p>
-        <p><a class="btn btn-default" href="https://centricconsulting.com/about-us/why-were-here/">Learn more about our core values&raquo;</a></p>
+        <h2> What We Value</h2>
+        <p> At Centric we reflect on our seven core values throughout our daily tasks and goals. The seven core values include Stewardship, Culture, Innovation, Greatergood, Integrity and openess, delivery excellence, and balance. </p>
+        <p> <a class="btn btn-default" href="https://centricconsulting.com/about-us/why-were-here/"> Learn more about our core values&raquo;</a> </p>
     </div>
     <div class="col-md-4">
-        <h2>What We Do</h2>
-        <p>Centric provides clients with solutions to technilogical business problems that leads to new strategic strategy that will lead to a competitve advantge from competitiors. </p>
-        <p><a class="btn btn-default" href="https://centricconsulting.com/about-us/how-we-work/">Learn more what we do &raquo;</a></p>
+        <h2> What We Do</h2>
+        <p> Centric provides clients with solutions to technilogical business problems that leads to new strategic strategy that will lead to a competitve advantge from competitiors. </p>
+        <p> <a class="btn btn-default" href="https://centricconsulting.com/about-us/how-we-work/"> Learn more what we do &raquo;</a> </p>
     </div>
 </div>
 <script type="text/javascript">
@@ -64,15 +213,18 @@
         this.txt = '';
         this.tick();
         this.isDeleting = false;
-    };
+    }
+
+        ;
 
     TxtType.prototype.tick = function () {
         var i = this.loopNum % this.toRotate.length;
         var fullTxt = this.toRotate[i];
-
         if (this.isDeleting) {
             this.txt = fullTxt.substring(0, this.txt.length - 1);
-        } else {
+        }
+
+        else {
             this.txt = fullTxt.substring(0, this.txt.length + 1);
         }
 
@@ -81,12 +233,16 @@
         var that = this;
         var delta = 200 - Math.random() * 100;
 
-        if (this.isDeleting) { delta /= 2; }
+        if (this.isDeleting) {
+            delta /= 2;
+        }
 
         if (!this.isDeleting && this.txt === fullTxt) {
             delta = this.period;
             this.isDeleting = true;
-        } else if (this.isDeleting && this.txt === '') {
+        }
+
+        else if (this.isDeleting && this.txt === '') {
             this.isDeleting = false;
             this.loopNum++;
             delta = 500;
@@ -95,7 +251,9 @@
         setTimeout(function () {
             that.tick();
         }, delta);
-    };
+    }
+
+        ;
 
     window.onload = function () {
         var elements = document.getElementsByClassName('typewrite');
@@ -105,11 +263,13 @@
             if (toRotate) {
                 new TxtType(elements[i], JSON.parse(toRotate), period);
             }
+
         }
         // INJECT CSS
         var css = document.createElement("style");
         css.type = "text/css";
         css.innerHTML = ".typewrite > .wrap { border-right: 0.08em solid #fff}";
         document.body.appendChild(css);
-    };
+    }
+        ;
 </script>
