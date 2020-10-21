@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -124,6 +125,34 @@ namespace team5_centric.Controllers
                 db.Dispose();
             }
             base.Dispose(disposing);
+
         }
+
+        public ActionResult Index()
+            {
+                return View();
+            }
+        [HttpPost]
+        public ActionResult Index(HttpPostedFileBase file)
+            {
+                var path = " ";
+            if(file!=null)
+                {
+                   if(file.ContentLength>0)
+                    {
+                        //for checking uploaded file is image or not
+                        if(path.GetExtension(file.FileName).ToLower()==".jpg")
+                            || path.GetExtension(file.FileName).ToLower() == ".png"
+                            || path.GetExtension(file.FileName).ToLower() == ".gif"
+                            || path.GetExtension(file.FileName).ToLower() == ".jpeg")
+                            {
+                            path=Path.Combine(Server.MapPath("~/Content/img"),file.FileName);
+                            file.SaveAs(path);
+                            ViewBag.UploadSuccess = true;
+                            }
+                    }
+            }
+                return View();
+            }
     }
 }
