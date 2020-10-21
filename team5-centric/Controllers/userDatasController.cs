@@ -128,10 +128,8 @@ namespace team5_centric.Controllers
 
         }
 
-        public ActionResult Index()
-            {
-                return View();
-            }
+     
+         
         [HttpPost]
         public ActionResult Index(HttpPostedFileBase file)
             {
@@ -141,10 +139,10 @@ namespace team5_centric.Controllers
                    if(file.ContentLength>0)
                     {
                         //for checking uploaded file is image or not
-                        if(path.GetExtension(file.FileName).ToLower()==".jpg")
-                            || path.GetExtension(file.FileName).ToLower() == ".png"
-                            || path.GetExtension(file.FileName).ToLower() == ".gif"
-                            || path.GetExtension(file.FileName).ToLower() == ".jpeg")
+                        if(Path.GetExtension(file.FileName).ToLower()==".jpg"
+                            || Path.GetExtension(file.FileName).ToLower() == ".png"
+                            || Path.GetExtension(file.FileName).ToLower() == ".gif"
+                            || Path.GetExtension(file.FileName).ToLower() == ".jpeg")
                             {
                             path=Path.Combine(Server.MapPath("~/Content/img"),file.FileName);
                             file.SaveAs(path);

@@ -71,9 +71,10 @@
             </div>
         </div>
 
-        @using(html.beginform("Create", "userDatas", FormMethod.Post, new { enctype="multipart/form-datea"}))
+       @using(Html.BeginForm("Create", "userDatas", FormMethod.Post, new { enctype="multipart/form-datea"}))
+
         {
-            <h3>Upload Image for Profile</h3>
+            <h5>Upload Image for Profile</h5>
             <input type="file" name="file" value="Browse" />
             <br />
             <input type="submit" value="Upload" />
@@ -81,7 +82,7 @@
 
         @if(ViewBag.UploadSuccess==true)
         {
-            <span> UPload Completed Successfully</span>
+            <span> Upload Completed Successfully</span>
         }
 
         <div class="form-group">
