@@ -17,10 +17,30 @@ namespace team5_centric.Controllers
         private centricContext db = new centricContext();
 
         // GET: userDatas
-        public ActionResult Index()
+        public ActionResult Index(string searchString)
         {
+            var userSearch = from o in db.userDatas select o;
+            string[] userNames;
+	        if (!String.IsNullOrEmpty(searchString))
+                {
+		            userNames = searchString.Split(' ');
+		            if (userNames.Count() == 1)
+			            {
+				            userSearch = userSearch.Where(c => c.lastName.Contains(searchString) ||
+				            c.firstName.Contains(searchString)).OrderBy(c => c.lastName);
+			            }
+		            else
+			            {
+				            string s1 = userNames [0];
+				            string s2 = userNames [1];
+				            userSearch = userSearch.Where(c => c.lastName.Contains(s2) &&
+				            c.firstName.Contains(s1)).OrderBy(c => c.lastName);
+			            }	
+		            return View(userSearch.ToList());
+                }
             return View(db.userDatas.ToList());
         }
+        
 
         // GET: userDatas/Details/5
         public ActionResult Details(Guid? id)
