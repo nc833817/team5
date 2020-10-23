@@ -40,7 +40,7 @@ namespace team5_centric.Controllers
         // GET: recognitions/Create
         public ActionResult Create()
         {
-            ViewBag.userId = new SelectList(db.userDatas, "userId", "firstName");
+            ViewBag.userId = new SelectList(db.userDatas, "userId", "fullName");
             return View();
         }
 
@@ -59,7 +59,7 @@ namespace team5_centric.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.userId = new SelectList(db.userDatas, "userId", "firstName", recognition.userId);
+            ViewBag.userId = new SelectList(db.userDatas, "userId", "fullName", recognition.userId);
             return View(recognition);
         }
 
@@ -75,7 +75,7 @@ namespace team5_centric.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.userId = new SelectList(db.userDatas, "userId", "firstName", recognition.userId);
+            ViewBag.userId = new SelectList(db.userDatas, "userId", "fullName", recognition.userId);
             return View(recognition);
         }
 
@@ -92,7 +92,7 @@ namespace team5_centric.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.userId = new SelectList(db.userDatas, "userId", "firstName", recognition.userId);
+            ViewBag.userId = new SelectList(db.userDatas, "userId", "fullName", recognition.userId);
             return View(recognition);
         }
 
