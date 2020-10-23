@@ -4,12 +4,14 @@
     ViewBag.Title = "Details";
 }
 
-<h2>Details</h2>
+<h2>Employee Profile</h2>
 
-<div>
-    <h4>userData</h4>
+
+<div class="jumbotron">
+    <h4>Employee Name</h4>
     <hr />
     <dl class="dl-horizontal">
+
         <dt>
             @Html.DisplayNameFor(model => model.firstName)
         </dt>
@@ -60,15 +62,20 @@
 
         <dt>
             @Html.DisplayNameFor(model => model.avatar)
+
         </dt>
 
         <dd>
             @Html.DisplayFor(model => model.avatar)
+            <img src="kiefer.jpg" alt="Avatar" width="500" height="333" />
+        </dd>
+        <dd>
+       @Html.ActionLink("Edit", "Edit", new { id = Model.userId }) |
+       @Html.ActionLink("Back to List", "Index")
         </dd>
 
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.userId }) |
-    @Html.ActionLink("Back to List", "Index")
+    
 </p>
