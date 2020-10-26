@@ -17,6 +17,7 @@ namespace team5_centric.Controllers
         private centricContext db = new centricContext();
 
         // GET: userDatas
+        [AllowAnonymous]
         public ActionResult Index(string searchString)
         {
             var userSearch = from o in db.userDatas select o;
@@ -43,6 +44,7 @@ namespace team5_centric.Controllers
         
 
         // GET: userDatas/Details/5
+        [AllowAnonymous]
         public ActionResult Details(Guid? id)
         {
             if (id == null)
@@ -58,6 +60,7 @@ namespace team5_centric.Controllers
         }
 
         // GET: userDatas/Create
+        [Authorize]
         public ActionResult Create()
         {
             return View();
@@ -82,6 +85,7 @@ namespace team5_centric.Controllers
         }
 
         // GET: userDatas/Edit/5
+        [Authorize]
         public ActionResult Edit(Guid? id)
         {
             if (id == null)
@@ -99,6 +103,7 @@ namespace team5_centric.Controllers
         // POST: userDatas/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        [Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "userId,firstName,lastName,email,officeLocation,position,startDate,avatar")] userData userData)
@@ -113,6 +118,7 @@ namespace team5_centric.Controllers
         }
 
         // GET: userDatas/Delete/5
+        [Authorize]
         public ActionResult Delete(Guid? id)
         {
             if (id == null)
@@ -128,6 +134,7 @@ namespace team5_centric.Controllers
         }
 
         // POST: userDatas/Delete/5
+        [Authorize]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(Guid id)
