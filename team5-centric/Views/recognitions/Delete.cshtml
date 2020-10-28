@@ -12,19 +12,27 @@
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.userData.firstName)
+            @Html.DisplayNameFor(model => model.userDatas.firstName)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.userData.firstName)
+            @Html.DisplayFor(model => model.userDatas.firstName)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.valueId)
+            @Html.DisplayNameFor(model => model.values.valueName)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.valueId)
+            @Html.DisplayFor(model => model.values.valueName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.valueComment)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.valueComment)
         </dd>
 
     </dl>

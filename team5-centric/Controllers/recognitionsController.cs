@@ -18,7 +18,7 @@ namespace team5_centric.Controllers
         // GET: recognitions
         public ActionResult Index()
         {
-            var recognitions = db.recognitions.Include(r => r.userData);
+            var recognitions = db.recognitions.Include(r => r.userDatas).Include(r => r.values);
             return View(recognitions.ToList());
         }
 
@@ -40,7 +40,8 @@ namespace team5_centric.Controllers
         // GET: recognitions/Create
         public ActionResult Create()
         {
-            ViewBag.userId = new SelectList(db.userDatas, "userId", "fullName");
+            ViewBag.userId = new SelectList(db.userDatas, "userId", "firstName");
+            ViewBag.valueId = new SelectList(db.values, "valueId", "valueName");
             return View();
         }
 
@@ -49,7 +50,7 @@ namespace team5_centric.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "recId,userId,valueId")] recognition recognition)
+        public ActionResult Create([Bind(Include = "recId,userId,valueId,valueComment")] recognition recognition)
         {
             if (ModelState.IsValid)
             {
@@ -59,7 +60,8 @@ namespace team5_centric.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.userId = new SelectList(db.userDatas, "userId", "fullName", recognition.userId);
+            ViewBag.userId = new SelectList(db.userDatas, "userId", "firstName", recognition.userId);
+            ViewBag.valueId = new SelectList(db.values, "valueId", "valueName", recognition.valueId);
             return View(recognition);
         }
 
@@ -75,7 +77,8 @@ namespace team5_centric.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.userId = new SelectList(db.userDatas, "userId", "fullName", recognition.userId);
+            ViewBag.userId = new SelectList(db.userDatas, "userId", "firstName", recognition.userId);
+            ViewBag.valueId = new SelectList(db.values, "valueId", "valueName", recognition.valueId);
             return View(recognition);
         }
 
@@ -84,7 +87,7 @@ namespace team5_centric.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "recId,userId,valueId")] recognition recognition)
+        public ActionResult Edit([Bind(Include = "recId,userId,valueId,valueComment")] recognition recognition)
         {
             if (ModelState.IsValid)
             {
@@ -92,7 +95,8 @@ namespace team5_centric.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.userId = new SelectList(db.userDatas, "userId", "fullName", recognition.userId);
+            ViewBag.userId = new SelectList(db.userDatas, "userId", "firstName", recognition.userId);
+            ViewBag.valueId = new SelectList(db.values, "valueId", "valueName", recognition.valueId);
             return View(recognition);
         }
 

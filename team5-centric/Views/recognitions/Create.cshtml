@@ -1,115 +1,56 @@
-﻿<!DOCTYPE html>
-<html>
-<style>
+﻿@model team5_centric.Models.recognition
 
-    input[type=text], select {
-        width: 100%;
-        padding: 12px 20px;
-        margin: 8px 0;
-        display: inline-block;
-        border: 1px solid #ccc;
-        border-radius: 4px;
-        box-sizing: border-box;
-    }
-    <meta charset="utf-8" >
-    <meta name="viewport" content="width=device-width, initial-scale=1" >
+@{
+    ViewBag.Title = "Create";
+}
 
-</style>
-<body>
-
-    @model team5_centric.Models.recognition
-
-    @{
-        ViewBag.Title = "Create";
-    }
+<h2>Create</h2>
 
 
-    <h2>Create</h2>
-
-    @using (Html.BeginForm())
-    {
-        @Html.AntiForgeryToken()
-
-        <div>
-            <h4>recognition</h4>
-            <hr />
-            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-            <div class="form-group">
-                @Html.LabelFor(model => model.userId, "Employee", htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.DropDownList("userId", null, htmlAttributes: new { @class = "form-control" })
-                    @Html.ValidationMessageFor(model => model.userId, "", new { @class = "text-danger" })
-                </div>
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <h4>recognition</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.userId, "userId", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("userId", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.userId, "", new { @class = "text-danger" })
             </div>
         </div>
-
-        @*<div class="form-group">
-                @Html.LabelFor(model => model.values, "Value", htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.DropDownList("valueName", null, htmlAttributes: new { @class = "form-control" })
-                    @Html.ValidationMessageFor(model => model.values, "", new { @class = "text-danger" })
-                </div>
-            </div>*@
-
-        @*<div class="form-group">
-                @Html.LabelFor(model => model.valueId, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.valueId, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.valueId, "", new { @class = "text-danger" })
-                </div>
-            </div>*@
-
-        <!--<div class="form-horizontal">
-            <div class="col-md-10">
-                <span class="dropdown">-->
-        @*<button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">
-                Dropdown
-                <span class="caret"></span>
-            </button>*@
-        @*<a href="#" class="btn btn-default dropdown toggle" style="margin-top:10px" data-toggle="dropdown">Select Value <span class="caret"></span></a>
-                    <ul class="dropdown-menu">
-                        <li><a href="recognitions"></a>Stewardship</li>
-                        <li><a href="recognitions">Culture</a></li>
-                        <li><a href="recognitions">Innovation</a></li>
-                        <li><a href="recognitions">Balance</a></li>
-                        <li><a href="recognitions">Delivery Excellence</a></li>
-                        <li><a href="recognitions">Greater Good</a></li>
-                        <li><a href="recognitions">Ignite passion for the greater good</a></li>
-                    </ul>
-                </span>
-            </div>*@
 
         <div class="form-group">
-            @Html.LabelFor(model => model.recId, "Reason for Recognition", htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.valueId, "valueId", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.TextBox("recId", null, htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.recId, "", new { @class = "text-danger" })
+                @Html.DropDownList("valueId", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.valueId, "", new { @class = "text-danger" })
             </div>
         </div>
 
-        <div class="container">
-            <form>
-                <div class="form-group">
-                    <label for="comment">Reason For Recognition:</label>
-                    <textarea class="form-control" rows="5" width="device-width" id="comment"></textarea>
-                </div>
-            </form>
+        <div class="form-group">
+            @Html.LabelFor(model => model.valueComment, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.valueComment, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.valueComment, "", new { @class = "text-danger" })
             </div>
+        </div>
 
-
-            <div class="form-group">
-                <div class="col-md-offset-2 col-md-10">
-                    <input type="submit" value="Create" class="btn btn-default" />
-                </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
             </div>
-        }
-
-    <div>
-        @Html.ActionLink("Back to List", "Index")
+        </div>
     </div>
+}
 
-    @section Scripts {
-        @Scripts.Render("~/bundles/jqueryval")
-    }
-</body>
-</html>
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
