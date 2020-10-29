@@ -66,8 +66,7 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.avatar)
-            <img src="kiefer.jpg" alt="Avatar" width="500" height="333" />
+            <img src="~/Content/Avatars/@Model.avatar" height="300" />
         </dd>
         <dd>
        @Html.ActionLink("Edit", "Edit", new { id = Model.userId }) |

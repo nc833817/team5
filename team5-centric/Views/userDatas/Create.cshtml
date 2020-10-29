@@ -7,10 +7,10 @@
 <h2>Create</h2>
 
 
-@using (Html.BeginForm()) 
+@using (Html.BeginForm("Create", "userDatas", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
         <h4>userData</h4>
         <hr />
@@ -31,13 +31,13 @@
             </div>
         </div>
 
-        <div class="form-group">
+        @*<div class="form-group">
             @Html.LabelFor(model => model.email, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.email, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.email, "", new { @class = "text-danger" })
             </div>
-        </div>
+        </div>*@
 
         <div class="form-group">
             @Html.LabelFor(model => model.officeLocation, htmlAttributes: new { @class = "control-label col-md-2" })
@@ -66,24 +66,33 @@
         <div class="form-group">
             @Html.LabelFor(model => model.avatar, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.avatar, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.avatar, "", new { @class = "text-danger" })
+                <input id="UploadedImage" type="file" name="UploadedImage" />
             </div>
         </div>
 
-       @using(Html.BeginForm("Create", "userDatas", FormMethod.Post, new { enctype="multipart/form-datea"}))
+        @*// Original*@
+        @*<div class="form-group">
+                @Html.LabelFor(model => model.avatar, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.avatar, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.avatar, "", new { @class = "text-danger" })
+                </div>
+            </div>*@
 
-        {
-            <h5>Upload Image for Profile</h5>
-            <input type="file" name="file" value="Browse" />
-            <br />
-            <input type="submit" value="Upload" />
-            }
+        @*Sarahs Method*@
+        @*@using(Html.BeginForm("Create", "userDatas", FormMethod.Post, new { enctype="multipart/form-datea"}))
 
-        @if(ViewBag.UploadSuccess==true)
-        {
-            <span> Upload Completed Successfully</span>
-        }
+            {
+                <h5>Upload Image for Profile</h5>
+                <input type="file" name="file" value="Browse" />
+                <br />
+                <input type="submit" value="Upload" />
+                }
+
+            @if(ViewBag.UploadSuccess==true)
+            {
+                <span> Upload Completed Successfully</span>
+            }*@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">

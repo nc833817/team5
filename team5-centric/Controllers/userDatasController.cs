@@ -1,7 +1,9 @@
-﻿using System;
+﻿using Microsoft.AspNet.Identity;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Net;
@@ -71,19 +73,52 @@ namespace team5_centric.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        //public ActionResult Create([Bind(Include = "userId,firstName,lastName,email,officeLocation,position,startDate,avatar")] userData userData)
         public ActionResult Create([Bind(Include = "userId,firstName,lastName,email,officeLocation,position,startDate,avatar")] userData userData)
         {
             if (ModelState.IsValid)
             {
-                userData.userId = Guid.NewGuid();
+                Guid memberID;
+                Guid.TryParse(User.Identity.GetUserId(), out memberID);
+                userData.userId = memberID;
                 db.userDatas.Add(userData);
-                db.SaveChanges();
-                return RedirectToAction("Index");
+
+                HttpPostedFileBase file = Request.Files["UploadedImage"]; //(A) – see notes below
+                if (file != null && file.FileName != null && file.FileName != "") //(B)
+                {
+                    FileInfo fi = new FileInfo(file.FileName); //(C)
+                    if (fi.Extension != ".png" && fi.Extension != ".jpg" && fi.Extension != ".gif")  //(D)
+                    {
+                        TempData["Errormsg"] = "Image File Extension is not valid"; //(E)
+                        return View(userData);
+                    }
+                    else
+                    {
+                        // this saves the file as the user’s ID and file extension
+                        userData.avatar = userData.userId + fi.Extension; //(F)
+                        file.SaveAs(Server.MapPath("~/Content/Avatars/" + userData.avatar)); //(G)
+                    }
+                }
+                userData.email = User.Identity.Name;
+                try
+                {
+                    db.userDatas.Add(userData);
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                }
+                catch (Exception)
+                {
+                    return View("duplicateUser");
+                }
+               
+          
+             
             }
-
-            return View(userData);
+            else
+            {
+                return View(userData);
+            }
         }
-
         // GET: userDatas/Edit/5
         [Authorize]
         public ActionResult Edit(Guid? id)
@@ -92,12 +127,25 @@ namespace team5_centric.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            userData userData = db.userDatas.Find(id);
-            if (userData == null)
+            userData user = db.userDatas.Find(id);
+            if (user == null)
             {
                 return HttpNotFound();
             }
-            return View(userData);
+            Guid memberID;
+            Guid.TryParse(User.Identity.GetUserId(), out memberID);
+            if (user.userId == memberID)
+            {
+                // find the user's record
+                var currentUser = db.userDatas.Find(memberID);
+                // save the current photo into TempData
+                TempData["oldPhoto"] = currentUser.avatar; // save the current photo info
+                return View(user);
+            }
+            else
+            {
+                return View("NotAuthorized");
+            }
         }
 
         // POST: userDatas/Edit/5
@@ -111,11 +159,65 @@ namespace team5_centric.Controllers
             if (ModelState.IsValid)
             {
                 db.Entry(userData).State = EntityState.Modified;
+                HttpPostedFileBase file = Request.Files["UploadedImage"];
+                if (file != null && file.FileName != null && file.FileName != "")
+                {
+                    FileInfo fi = new FileInfo(file.FileName);
+                    if (fi.Extension != ".png" && fi.Extension != ".jpg" && fi.Extension != "gif")
+                {
+                        TempData["Errormsg"] = "Image File Extension is not valid";
+                        return View(userData);
+                    }
+            else
+                    {
+                        // the following statement prevents the File statements from throwing Exceptions if the file isn't found
+                        string imageName = "none";
+                        // if the old photo isn't null, load it's name into imageName
+                        if (TempData["oldPhoto"] != null)
+                        {
+                            imageName = TempData["oldPhoto"].ToString();
+                        }
+                        string path = Server.MapPath("~/Content/Avatars/" + imageName);
+                        // there may not be a file, so use try/catch
+                        try
+                        {
+                            if (System.IO.File.Exists(path))
+                            {
+                                System.IO.File.Delete(path);
+                            }
+                            else
+                            {
+                                // must already be deleted
+                            }
+                        }
+                        catch (Exception)
+                        {
+                            // delete failed - probably not a real issue
+                        }
+                        // now upload the new image
+                        if (fi.Name != null && fi.Name != "") // i.e., there was a file selected
+                        {
+                            //update the stored file name, if there is one
+                            //the file name is changed to the userID, to avoid name conflicts
+                            userData.avatar = userData.userId + fi.Extension;
+                            file.SaveAs(Server.MapPath("~/Content/Avatars/" + userData.avatar));
+                        }
+                    }
+                }
+                else
+                {
+                    // no file was selected, so set the photo field back to its original value
+                    if (TempData["oldPhoto"] != null)
+                    {
+                        userData.avatar = TempData["oldPhoto"].ToString();
+                    }
+                }
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
             return View(userData);
         }
+    
 
         // GET: userDatas/Delete/5
         [Authorize]
@@ -134,6 +236,33 @@ namespace team5_centric.Controllers
         }
 
         // POST: userDatas/Delete/5
+        //[HttpPost, ActionName("Delete")]
+        //[ValidateAntiForgeryToken]
+        //public ActionResult DeleteConfirmed(Guid id)
+        //{
+        //    Image userData = db.userDatas.Find(id);
+        //    string imageName = userData.avatar; //(A)
+        //    string path = Server.MapPath("~/Content/Avatars/" + imageName); //(B)
+        //                                                           // there may not be a file, so use try/catch
+        //    try
+        //    {
+        //        if (System.IO.File.Exists(path)) //(C)
+        //        {
+        //            System.IO.File.Delete(path); //(D)
+        //        }
+        //        else
+        //        {
+        //            // must already be deleted (E)
+        //        }
+        //    }
+        //    catch (Exception)
+        //    {
+        //        // delete failed - probably not a real issue (F)
+        //    }
+        //    db.userDatas.Remove(image);
+        //    db.SaveChanges();
+        //    return RedirectToAction("Index");
+        //}
         [Authorize]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]

@@ -24,7 +24,7 @@ namespace team5_centric.Models
         public string lastName { get; set; }
 
         [Display(Name = "Email Address")]
-        [Required(ErrorMessage = "Email Address is a required field")]
+        //[Required(ErrorMessage = "Email Address is a required field")]
         [EmailAddress(ErrorMessage = "Please enter a valid Email Address")]
         public string email { get; set; }
 
@@ -52,7 +52,7 @@ namespace team5_centric.Models
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:MM/dd/yyyy}", ApplyFormatInEditMode = true)]
         public DateTime startDate { get; set; }
-        public byte[] avatar { get; set; }
+        public string avatar { get; set; }
         public ICollection<recognition> recognitions { get; set; }
     }
 }
