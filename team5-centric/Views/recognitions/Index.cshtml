@@ -45,23 +45,27 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.userDatas.firstName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.values.valueName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.valueComment)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.recId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.recId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.recId })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.userDatas.firstName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.values.valueName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.valueComment)
+            </td>
+            <td>
+                <i class="glyphicon glyphicon-edit"></i>
+                @Html.ActionLink("Edit", "Edit", new { id = item.recId }) |
+                <i class="glyphicon glyphicon-list"></i>
+                @Html.ActionLink("Details", "Details", new { id = item.recId }) |
+                <i class="glyphicon glyphicon-trash"></i>
+                @Html.ActionLink("Delete", "Delete", new { id = item.recId })
+            </td>
+        </tr>
+    }
 
 </table>

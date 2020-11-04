@@ -47,26 +47,30 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.valueName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.valueDescription)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.valueIcon)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.valueWeight)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.valueId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.valueId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.valueId })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.valueName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.valueDescription)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.valueIcon)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.valueWeight)
+            </td>
+            <td>
+                <i class="glyphicon glyphicon-edit"></i>
+                @Html.ActionLink("Edit", "Edit", new { id = item.valueId }) |
+                <i class="glyphicon glyphicon-list"></i>
+                @Html.ActionLink("Details", "Details", new { id = item.valueId }) |
+                <i class="glyphicon glyphicon-trash"></i>
+                @Html.ActionLink("Delete", "Delete", new { id = item.valueId })
+            </td>
+        </tr>
+    }
 
 </table>
