@@ -6830,5 +6830,13 @@ button.close {
   .hidden-print {
     display: none !important;
   }
+
+    .nicoletextbox {
+    <input class="form-control input-lg" id="inputlg" type="text"> </div>
+    }
+  }
+
+
+
 }
 /*# sourceMappingURL=bootstrap.css.map */
