@@ -11,9 +11,13 @@ namespace team5_centric.Models
     {
         [Key]
         public Guid valueId { get; set; }
+        [Display (Name = "Value")]
         public string valueName { get; set; }
+        [Display (Name = "Value Description")]
         public string valueDescription { get; set; }
+        [Display (Name = "Value Icon")]
         public byte[] valueIcon { get; set; }
+        [Display (Name = "Value Weight")]
         public int valueWeight { get; set; }
         public ICollection<recognition> recognitions { get; set; }
     }

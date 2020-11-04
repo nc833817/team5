@@ -13,9 +13,12 @@ namespace team5_centric.Models
         public Guid recId { get; set; }
         public Guid userId { get; set; }
         public virtual userData userDatas { get; set; }
+       
         public Guid valueId { get; set; }
         public virtual values values { get; set; }
+        [Display (Name = "Reason for Recognition")]
         public string valueComment { get; set; }
+        [Display (Name = "Recognition")]
         public recognition recognitions { get; set; }
         
         
