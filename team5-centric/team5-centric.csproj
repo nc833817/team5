@@ -271,6 +271,7 @@
     <Content Include="Views\userDatas\Index.cshtml" />
     <Content Include="Views\userDatas\duplicateUser.cshtml" />
     <Content Include="Views\Shared\homeLayout.cshtml" />
+    <Content Include="Views\userDatas\Details - Copy.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
