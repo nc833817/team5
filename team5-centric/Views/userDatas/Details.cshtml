@@ -80,8 +80,9 @@
                 </article>
 
             </td>
-            
-            <td style="padding:2px 150px 2px 150px">
+
+
+            <td style="padding:2px 25px 4px 25px">
                 @*<aside>*@
 
 
@@ -107,29 +108,97 @@
                     }
                 </style>
 
-                @*</head>*@
 
-                <table id="t01">
+                <table>
                     <tr>
-                        <th>Leader Board</th>
+                        <td>
+                            <div id="piechart">
+
+
+                                <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+                                <script type="text/javascript">
+
+                                    // Load google charts
+
+                                    google.charts.load('current', { 'packages': ['corechart'] });
+
+                                    google.charts.setOnLoadCallback(drawChart);
+
+
+                                    // Draw the chart and set the chart values
+
+                                    function drawChart() {
+
+                                        var data = google.visualization.arrayToDataTable([
+
+                                            ['Task', 'Points'],
+
+                                            ['Points to next reward', 10],
+
+                                            ['Points earned', 6],
+
+                                        ]);
+
+
+
+                                        // Optional; add a title and set the width and height of the chart
+
+                                        var options = { 'title': 'My Point Status','width': 450, 'height': 350 };
+
+
+                                        // Display the chart inside the <div> element with id="piechart"
+
+                                        var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+
+                                        chart.draw(data, options);
+
+                                    }
+
+                                </script>
+
+                            </div>
+                        </td>
+                        <td>
+
+
+                            <table id="t01" style="float:left">
+                                <tr>
+                                    <th>Leader Board</th>
+                                </tr>
+
+                                <tr>
+                                    <td>#20</td>
+                                </tr>
+
+                                <tr>
+
+                                    <td>#21</td>
+
+                                </tr>
+
+                                <tr>
+                                    <td>#22</td>
+
+                                </tr>
+                                <tr>
+                                    <td>#23</td>
+
+                                </tr>
+                                <tr>
+                                    <td>#24</td>
+
+                                </tr>
+                                <tr>
+                                    <td>#25</td>
+
+                                </tr>
+                            </table>
+                        </td>
                     </tr>
-
-                    <tr>
-                        <td>#20</td>
-                    </tr>
-
-                    <tr>
-
-                        <td>#21</td>
-
-                    </tr>
-
-                    <tr>
-                        <td>#22</td>
-
-                    </tr>
-
                 </table>
+
+
 
     </table>
 
@@ -156,6 +225,7 @@
         @*<table style="width:100%">
 
             <table id="t01">*@
+
 
         <tr>
 
@@ -198,6 +268,7 @@
         </tr>
 
     </table>
+
     @*</table>*@
     @*</aside>*@
     @*</td>
