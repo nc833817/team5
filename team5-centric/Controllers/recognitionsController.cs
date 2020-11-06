@@ -16,6 +16,7 @@ namespace team5_centric.Controllers
         private centricContext db = new centricContext();
 
         // GET: recognitions
+        [Authorize]
         public ActionResult Index()
         {
             var recognitions = db.recognitions.Include(r => r.userDatas).Include(r => r.values);
@@ -23,6 +24,7 @@ namespace team5_centric.Controllers
         }
 
         // GET: recognitions/Details/5
+        [Authorize]
         public ActionResult Details(Guid? id)
         {
             if (id == null)
@@ -38,6 +40,7 @@ namespace team5_centric.Controllers
         }
 
         // GET: recognitions/Create
+        [Authorize]
         public ActionResult Create()
         {
             ViewBag.userId = new SelectList(db.userDatas, "userId", "fullName");
@@ -50,6 +53,7 @@ namespace team5_centric.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public ActionResult Create([Bind(Include = "recId,userId,valueId,valueComment")] recognition recognition)
         {
             if (ModelState.IsValid)
@@ -66,6 +70,7 @@ namespace team5_centric.Controllers
         }
 
         // GET: recognitions/Edit/5
+        [Authorize]
         public ActionResult Edit(Guid? id)
         {
             if (id == null)
@@ -87,6 +92,7 @@ namespace team5_centric.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public ActionResult Edit([Bind(Include = "recId,userId,valueId,valueComment")] recognition recognition)
         {
             if (ModelState.IsValid)
@@ -101,6 +107,7 @@ namespace team5_centric.Controllers
         }
 
         // GET: recognitions/Delete/5
+        [Authorize]
         public ActionResult Delete(Guid? id)
         {
             if (id == null)
@@ -116,6 +123,7 @@ namespace team5_centric.Controllers
         }
 
         // POST: recognitions/Delete/5
+        [Authorize]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(Guid id)

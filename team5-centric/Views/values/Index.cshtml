@@ -27,9 +27,9 @@
 
 <h2>Index</h2>
 
-<p>
+@*<p>
     @Html.ActionLink("Create New", "Create")
-</p>
+</p>*@
 <table class="table">
     <tr>
         <th>
@@ -41,9 +41,9 @@
         <th>
             @Html.DisplayNameFor(model => model.valueIcon)
         </th>
-        <th>
+        @*<th>
             @Html.DisplayNameFor(model => model.valueWeight)
-        </th>
+        </th>*@
         <th></th>
     </tr>
 
@@ -59,17 +59,18 @@
             <td>
                 @Html.DisplayFor(modelItem => item.valueIcon)
             </td>
-            <td>
+
+            @*<td>
                 @Html.DisplayFor(modelItem => item.valueWeight)
-            </td>
-            <td>
+            </td>*@
+            @*<td>
                 <i class="glyphicon glyphicon-edit"></i>
                 @Html.ActionLink("Edit", "Edit", new { id = item.valueId }) |
                 <i class="glyphicon glyphicon-list"></i>
                 @Html.ActionLink("Details", "Details", new { id = item.valueId }) |
                 <i class="glyphicon glyphicon-trash"></i>
                 @Html.ActionLink("Delete", "Delete", new { id = item.valueId })
-            </td>
+            </td>*@
         </tr>
     }
 

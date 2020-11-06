@@ -19,7 +19,7 @@ namespace team5_centric.Controllers
         private centricContext db = new centricContext();
 
         // GET: userDatas
-        [AllowAnonymous]
+        [Authorize]
         public ActionResult Index(string searchString)
         {
             var userSearch = from o in db.userDatas select o;
@@ -43,10 +43,10 @@ namespace team5_centric.Controllers
                 }
             return View(db.userDatas.ToList());
         }
-        
+
 
         // GET: userDatas/Details/5
-        [AllowAnonymous]
+        [Authorize]
         public ActionResult Details(Guid? id)
         {
             if (id == null)
@@ -80,6 +80,7 @@ namespace team5_centric.Controllers
             {
                 Guid memberID;
                 Guid.TryParse(User.Identity.GetUserId(), out memberID);
+                userData.email = User.Identity.Name;
                 userData.userId = memberID;
                 db.userDatas.Add(userData);
 
@@ -99,7 +100,6 @@ namespace team5_centric.Controllers
                         file.SaveAs(Server.MapPath("~/Content/Avatars/" + userData.avatar)); //(G)
                     }
                 }
-                userData.email = User.Identity.Name;
                 try
                 {
                     db.userDatas.Add(userData);
@@ -109,10 +109,7 @@ namespace team5_centric.Controllers
                 catch (Exception)
                 {
                     return View("duplicateUser");
-                }
-               
-          
-             
+                }  
             }
             else
             {
@@ -144,7 +141,7 @@ namespace team5_centric.Controllers
             }
             else
             {
-                return View("NotAuthorized");
+                return View("notAuthorized");
             }
         }
 
@@ -227,12 +224,22 @@ namespace team5_centric.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            userData userData = db.userDatas.Find(id);
-            if (userData == null)
+            userData user = db.userDatas.Find(id);
+            if (user == null)
             {
                 return HttpNotFound();
             }
-            return View(userData);
+            Guid memberId;
+            Guid.TryParse(User.Identity.GetUserId(), out memberId);
+            if (user.userId == memberId)
+            {
+                return View(user);
+            }
+            else
+            {
+                return View("notAuthorized");
+            }
+            // old code: return View(userData);
         }
 
         // POST: userDatas/Delete/5
