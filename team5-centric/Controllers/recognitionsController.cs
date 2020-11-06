@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNet.Identity;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
@@ -102,6 +103,10 @@ namespace team5_centric.Controllers
                 return RedirectToAction("Index");
             }
             ViewBag.userId = new SelectList(db.userDatas, "userId", "fullName", recognition.userId);
+            string empID = User.Identity.GetUserId();
+            SelectList employees = new SelectList(db.userDatas, "SID", "fullName");
+            employees = new SelectList(employees.Where(x => x.Value != empID).ToList(), "Value", "Text");
+            ViewBag.userId = employees;
             ViewBag.valueId = new SelectList(db.values, "valueId", "valueName", recognition.valueId);
             return View(recognition);
         }
@@ -142,5 +147,6 @@ namespace team5_centric.Controllers
             }
             base.Dispose(disposing);
         }
+
     }
 }
