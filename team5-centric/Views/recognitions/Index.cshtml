@@ -41,7 +41,7 @@
         </th>
         <th>
             @Html.DisplayNameFor(model => model.valueComment)
-          
+
         </th>
         <th></th>
     </tr>
@@ -57,7 +57,7 @@
             </td>
             <td>
                 @*@Html.DisplayFor(modelItem => item.valueComment)*@
-                @{ 
+                @{
                     var valueComment = item.valueComment;
                 }
                 @Html.Raw(System.Web.HttpUtility.HtmlDecode(valueComment))

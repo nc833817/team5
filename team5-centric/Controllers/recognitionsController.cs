@@ -42,7 +42,6 @@ namespace team5_centric.Controllers
 
         // GET: recognitions/Create
         [Authorize]
-        
         public ActionResult Create()
         {
             ViewBag.userId = new SelectList(db.userDatas, "userId", "fullName");
@@ -79,7 +78,6 @@ namespace team5_centric.Controllers
 
         // GET: recognitions/Edit/5
         [Authorize]
-        
         public ActionResult Edit(Guid? id)
         {
             if (id == null)

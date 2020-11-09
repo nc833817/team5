@@ -61,15 +61,15 @@
 </div>
 
 @*@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-}*@
+        @Scripts.Render("~/bundles/jqueryval")
+    }*@
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
     <script src='//cloud.tinymce.com/stable/tinymce.min.js'></script>
     <script>
-                tinymce.init({
-                    selector: '#valueComment'
-                });
+        tinymce.init({
+            selector: '#valueComment'
+        });
     </script>
 }
