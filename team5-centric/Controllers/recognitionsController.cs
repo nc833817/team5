@@ -60,6 +60,11 @@ namespace team5_centric.Controllers
             if (ModelState.IsValid)
             {
                 recognition.recId = Guid.NewGuid();
+                //Grab the logged in user:
+                Guid memberID;
+                Guid.TryParse(User.Identity.GetUserId(), out memberID);
+                recognition.recognizerId = memberID;
+
                 db.recognitions.Add(recognition);
                 db.SaveChanges();
                 return RedirectToAction("Index");
