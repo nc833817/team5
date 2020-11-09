@@ -10,43 +10,43 @@
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
-<div class="form-horizontal">
-    <h4>recognition</h4>
-    <hr />
-    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-    @Html.HiddenFor(model => model.recId)
 
-    <div class="form-group">
-        @Html.LabelFor(model => model.userId, "userId", htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.DropDownList("userId", null, htmlAttributes: new { @class = "form-control" })
-            @Html.ValidationMessageFor(model => model.userId, "", new { @class = "text-danger" })
+    <div class="form-horizontal">
+        <h4>recognition</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.recId)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.userId, "userId", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("userId", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.userId, "", new { @class = "text-danger" })
+            </div>
         </div>
-    </div>
 
-    <div class="form-group">
-        @Html.LabelFor(model => model.valueId, "valueId", htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.DropDownList("valueId", null, htmlAttributes: new { @class = "form-control" })
-            @Html.ValidationMessageFor(model => model.valueId, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.valueId, "valueId", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("valueId", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.valueId, "", new { @class = "text-danger" })
+            </div>
         </div>
-    </div>
 
-    <div class="form-group">
-        @Html.LabelFor(model => model.valueComment, "Reason for Recognition", htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.TextAreaFor(model => model.valueComment, new { htmlAttributes = new { @class = "form-control" }, id = "userId", cols = "80", rows = "9" })
-            @Html.ValidationMessageFor(model => model.valueComment, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.valueComment, "Reason for Recognition", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextAreaFor(model => model.valueComment, new { htmlAttributes = new { @class = "form-control" }, id = "userId", cols = "80", rows = "9" })
+                @Html.ValidationMessageFor(model => model.valueComment, "", new { @class = "text-danger" })
+            </div>
         </div>
-    </div>
 
-    @*<div class="form-group">
-        @Html.LabelFor(model => model.valueComment, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.valueComment, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.valueComment, "", new { @class = "text-danger" })
-        </div>*@
+        @*<div class="form-group">
+            @Html.LabelFor(model => model.valueComment, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.valueComment, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.valueComment, "", new { @class = "text-danger" })
+            </div>*@
     </div>
 
     <div class="form-group">
@@ -60,6 +60,16 @@
     @Html.ActionLink("Back to List", "Index")
 </div>
 
+@*@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}*@
+
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
+    <script src='//cloud.tinymce.com/stable/tinymce.min.js'></script>
+    <script>
+                tinymce.init({
+                    selector: '#valueComment'
+                });
+    </script>
 }

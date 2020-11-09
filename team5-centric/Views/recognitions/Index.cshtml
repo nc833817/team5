@@ -56,8 +56,12 @@
                 @Html.DisplayFor(modelItem => item.values.valueName)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.valueComment)
-               
+                @*@Html.DisplayFor(modelItem => item.valueComment)*@
+                @{ 
+                    var valueComment = item.valueComment;
+                }
+                @Html.Raw(System.Web.HttpUtility.HtmlDecode(valueComment))
+
             </td>
             <td>
                 <i class="glyphicon glyphicon-edit"></i>
