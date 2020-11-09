@@ -1,5 +1,16 @@
 ﻿@model team5_centric.Models.recognition
 
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="//cloud.tinymce.com/stable/tinymce.min.js"></script>
+    <script>tinymce.init({ selector: 'textarea' });</script>
+</head>
+@*<body>
+    <textarea>Easy! You should check out MoxieManager!</textarea>
+</body>*@
+</html>
+
 @{
     ViewBag.Title = "Create";
 }
@@ -10,6 +21,7 @@
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
+}
 
 <div class="form-horizontal">
     <h4>recognition</h4>
@@ -31,28 +43,48 @@
         </div>
     </div>
 
-    <div class=nicoletextbox>
+    <div class="form-group">
+        @Html.LabelFor(model => model.valueComment, "Reason for Recognition", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.TextAreaFor(model => model.valueComment, new { htmlAttributes = new { @class = "form-control" }, id = "userId", cols = "80", rows = "9" })
+            @Html.ValidationMessageFor(model => model.valueComment, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    
+
+    @*<div class=nicoletextbox>
         <div class="form-group">
             @Html.LabelFor(model => model.valueComment, "Reason for Recognition", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.valueComment, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.valueComment, "", new { @class = "text-danger" })
+                @Html.ValidationMessageFor(model => model.valueComment, "", new { @class = "text-danger" })*@
+    @*</div>
+                </div>
             </div>
-        </div>
-    </div>
-</div>
+        </div>*@
 
     <div class="form-group">
         <div class="col-md-offset-2 col-md-10">
             <input type="submit" value="Create" class="btn btn-default" />
         </div>
     </div>
-    }
+
 
     <div>
         @Html.ActionLink("Back to List", "Index")
     </div>
 
     @section Scripts {
+            @Scripts.Render("~/bundles/jqueryval")
+        }
+
+    @*@section Scripts {
         @Scripts.Render("~/bundles/jqueryval")
+        <script src='//cloud.tinymce.com/stable/tinymce.min.js'></script>
+        <script>
+            tinymce.init({
+                selector: '#userId'
+            });
+        </script>*@
     }
+

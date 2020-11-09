@@ -31,7 +31,8 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.valueComment)
+            @*@Html.DisplayFor(model => model.valueComment)*@
+            @Html.Raw(System.Web.HttpUtility.HtmlDecode(Model.valueComment))
         </dd>
 
     </dl>
