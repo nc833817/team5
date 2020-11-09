@@ -42,6 +42,7 @@ namespace team5_centric.Controllers
 
         // GET: recognitions/Create
         [Authorize]
+        
         public ActionResult Create()
         {
             ViewBag.userId = new SelectList(db.userDatas, "userId", "fullName");
@@ -55,6 +56,7 @@ namespace team5_centric.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize]
+        [ValidateInput(false)]
         public ActionResult Create([Bind(Include = "recId,userId,valueId,valueComment")] recognition recognition)
         {
             if (ModelState.IsValid)
@@ -77,6 +79,7 @@ namespace team5_centric.Controllers
 
         // GET: recognitions/Edit/5
         [Authorize]
+        
         public ActionResult Edit(Guid? id)
         {
             if (id == null)
@@ -99,6 +102,7 @@ namespace team5_centric.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize]
+        [ValidateInput(false)]
         public ActionResult Edit([Bind(Include = "recId,userId,valueId,valueComment")] recognition recognition)
         {
             if (ModelState.IsValid)
