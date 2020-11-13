@@ -9,14 +9,25 @@
     {
         @Html.AntiForgeryToken()
 
+        var userName = "";
+        var profilePic = "";
         {
             centricContext db = new centricContext();
             Guid userId;
             Guid.TryParse(User.Identity.GetUserId(), out userId);
             var registeredUser = db.userDatas.Find(userId);
-            var userName = registeredUser.firstName;
-            var profilePic = registeredUser.avatar;
-        
+            if(registeredUser == null)
+            {
+                userName = "";
+                profilePic = "";
+            }
+            else
+            {
+                userName = registeredUser.firstName;
+                profilePic = registeredUser.avatar;
+            }
+
+
 
         <div style="display:inline-block; margin-top:6px;" class="dropdown">
             <button class="btn btn-default dropdown-toggle" type="button" id="menu1" data-toggle="dropdown">
