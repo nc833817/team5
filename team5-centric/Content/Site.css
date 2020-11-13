@@ -580,7 +580,7 @@ canvas {
     width: 25px;
     height: 25px;
     position: relative;
-    background-image: url(~/Content/Avatars/blank-avatar.png);
+    background-image: url('../Content/Avatars/blank-avatar.png');
     background-color: #878787;
     overflow: hidden;
     background-size: cover;
