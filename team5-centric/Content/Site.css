@@ -575,3 +575,26 @@ canvas {
             padding: 5px;
             font-weight: bold;
         }
+
+.profile-sm {
+    width: 25px;
+    height: 25px;
+    position: relative;
+    background-image: url(~/Content/Avatars/blank-avatar.png);
+    background-color: #878787;
+    overflow: hidden;
+    background-size: cover;
+    background-repeat: no-repeat;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    border-radius: 50%;
+    float:left;
+}
+.profile-sm img {
+    width: 100%;
+    
+}
+.profile-rt {
+    padding-left: 30px;
+    padding-top:3px;
+}
