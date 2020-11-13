@@ -20,6 +20,7 @@ namespace team5_centric.Models
         [Display (Name = "Reason for Recognition")]
         public string valueComment { get; set; }
         [Display (Name = "Recognition")]
+        [StringLength(250)]
         
         public Guid recognizerId { get; set; }
         [ForeignKey("recognizerId")]
