@@ -1,7 +1,5 @@
 ﻿@model team5_centric.Models.recognition
 
-
-
 @{
     ViewBag.Title = "Create";
 }
@@ -9,49 +7,45 @@
 <h2>Create</h2>
 
 
-@using (Html.BeginForm())
+@using (Html.BeginForm()) 
 {
     @Html.AntiForgeryToken()
-
-
+    
     <div class="form-horizontal">
         <h4>recognition</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
-            @Html.LabelFor(model => model.userId, "Select Employee", htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.userId, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.DropDownList("userId", (SelectList)ViewBag.recID, "Please Select a Name", htmlAttributes: new { @class = "form-control" })
+                @Html.DropDownList("userId", null, htmlAttributes: new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.userId, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.valueId, "Select Value", htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.valueId, "valueId", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.DropDownList("valueId", (SelectList)ViewBag.recID, "Please Select a Value", htmlAttributes: new { @class = "form-control" })
+                @Html.DropDownList("valueId", null, htmlAttributes: new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.valueId, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.valueComment, "Reason for Recognition", htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.valueComment, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.TextAreaFor(model => model.valueComment, new { htmlAttributes = new { @class = "form-control" }, id = "valueComment", cols = "80", rows = "9" })
+                @Html.EditorFor(model => model.valueComment, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.valueComment, "", new { @class = "text-danger" })
             </div>
         </div>
 
-
-        @*<div class=nicoletextbox>
-                <div class="form-group">
-                    @Html.LabelFor(model => model.valueComment, "Reason for Recognition", htmlAttributes: new { @class = "control-label col-md-2" })
-                    <div class="col-md-10">
-                        @Html.EditorFor(model => model.valueComment, new { htmlAttributes = new { @class = "form-control" } })
-                        @Html.ValidationMessageFor(model => model.valueComment, "", new { @class = "text-danger" })
+        @*<div class="form-group">
+            @Html.LabelFor(model => model.recognizerId, "recognizerId", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("recognizerId", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.recognizerId, "", new { @class = "text-danger" })
             </div>
-                        </div>
-                    </div>*@
+        </div>*@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
@@ -65,18 +59,6 @@
     @Html.ActionLink("Back to List", "Index")
 </div>
 
-@*@section Scripts {
-        @Scripts.Render("~/bundles/jqueryval")
-    }*@
-
-
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
-    <script src='//cloud.tinymce.com/stable/tinymce.min.js'></script>
-    <script>
-        tinymce.init({
-            selector: '#valueComment'
-        });
-    </script>
 }
-

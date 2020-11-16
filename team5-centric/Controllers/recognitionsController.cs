@@ -17,15 +17,13 @@ namespace team5_centric.Controllers
         private centricContext db = new centricContext();
 
         // GET: recognitions
-        [Authorize]
         public ActionResult Index()
         {
-            var recognitions = db.recognitions.Include(r => r.userDatas).Include(r => r.values);
+            var recognitions = db.recognitions.Include(r => r.recognizer).Include(r => r.values);
             return View(recognitions.ToList());
         }
 
         // GET: recognitions/Details/5
-        [Authorize]
         public ActionResult Details(Guid? id)
         {
             if (id == null)
@@ -41,9 +39,9 @@ namespace team5_centric.Controllers
         }
 
         // GET: recognitions/Create
-        [Authorize]
         public ActionResult Create()
         {
+            ViewBag.recognizerId = new SelectList(db.userDatas, "userId", "firstName");
             ViewBag.userId = new SelectList(db.userDatas, "userId", "fullName");
             ViewBag.valueId = new SelectList(db.values, "valueId", "valueName");
             return View();
@@ -54,30 +52,26 @@ namespace team5_centric.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [Authorize]
-        [ValidateInput(false)]
-        public ActionResult Create([Bind(Include = "recId,userId,valueId,valueComment")] recognition recognition)
+        public ActionResult Create([Bind(Include = "recId,userId,valueId,valueComment,recognizerId")] recognition recognition)
         {
             if (ModelState.IsValid)
             {
+                
                 recognition.recId = Guid.NewGuid();
-                //Grab the logged in user:
                 Guid memberID;
                 Guid.TryParse(User.Identity.GetUserId(), out memberID);
                 recognition.recognizerId = memberID;
-
                 db.recognitions.Add(recognition);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.userId = new SelectList(db.userDatas, "userId", "fullName", recognition.userId);
+            ViewBag.recognizerId = new SelectList(db.userDatas, "userId", "firstName", recognition.recognizerId);
             ViewBag.valueId = new SelectList(db.values, "valueId", "valueName", recognition.valueId);
             return View(recognition);
         }
 
         // GET: recognitions/Edit/5
-        [Authorize]
         public ActionResult Edit(Guid? id)
         {
             if (id == null)
@@ -89,7 +83,7 @@ namespace team5_centric.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.userId = new SelectList(db.userDatas, "userId", "fullName", recognition.userId);
+            ViewBag.recognizerId = new SelectList(db.userDatas, "userId", "firstName", recognition.recognizerId);
             ViewBag.valueId = new SelectList(db.values, "valueId", "valueName", recognition.valueId);
             return View(recognition);
         }
@@ -99,9 +93,7 @@ namespace team5_centric.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [Authorize]
-        [ValidateInput(false)]
-        public ActionResult Edit([Bind(Include = "recId,userId,valueId,valueComment")] recognition recognition)
+        public ActionResult Edit([Bind(Include = "recId,userId,valueId,valueComment,recognizerId")] recognition recognition)
         {
             if (ModelState.IsValid)
             {
@@ -109,17 +101,12 @@ namespace team5_centric.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.userId = new SelectList(db.userDatas, "userId", "fullName", recognition.userId);
-            string empID = User.Identity.GetUserId();
-            SelectList employees = new SelectList(db.userDatas, "SID", "fullName");
-            employees = new SelectList(employees.Where(x => x.Value != empID).ToList(), "Value", "Text");
-            ViewBag.userId = employees;
+            ViewBag.recognizerId = new SelectList(db.userDatas, "userId", "firstName", recognition.recognizerId);
             ViewBag.valueId = new SelectList(db.values, "valueId", "valueName", recognition.valueId);
             return View(recognition);
         }
 
         // GET: recognitions/Delete/5
-        [Authorize]
         public ActionResult Delete(Guid? id)
         {
             if (id == null)
@@ -135,7 +122,6 @@ namespace team5_centric.Controllers
         }
 
         // POST: recognitions/Delete/5
-        [Authorize]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(Guid id)
@@ -154,6 +140,5 @@ namespace team5_centric.Controllers
             }
             base.Dispose(disposing);
         }
-
     }
 }

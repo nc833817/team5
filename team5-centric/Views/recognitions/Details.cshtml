@@ -11,11 +11,11 @@
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.userDatas.firstName)
+            @Html.DisplayNameFor(model => model.recognizer.firstName)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.userDatas.firstName)
+            @Html.DisplayFor(model => model.recognizer.firstName)
         </dd>
 
         <dt>
@@ -27,12 +27,19 @@
         </dd>
 
         <dt>
+            @Html.DisplayNameFor(model => model.userId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.userId)
+        </dd>
+
+        <dt>
             @Html.DisplayNameFor(model => model.valueComment)
         </dt>
 
         <dd>
-            @*@Html.DisplayFor(model => model.valueComment)*@
-            @Html.Raw(System.Web.HttpUtility.HtmlDecode(Model.valueComment))
+            @Html.DisplayFor(model => model.valueComment)
         </dd>
 
     </dl>
