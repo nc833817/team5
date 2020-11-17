@@ -13,22 +13,28 @@ namespace team5_centric.Models
         [Key]
         public Guid recId { get; set; }
 
-        [Display (Name = "Full Name")]
+        [Display(Name = "Full Name")]
+        [Required]
         public Guid userId { get; set; }
         [ForeignKey("userId")]
         
+        
         public virtual userData userDatas { get; set; }
 
-        
+        [Display(Name = "Core Value")]
+        [Required]
         public Guid valueId { get; set; }
-        [Display (Name = "Core Value")]
+
+
+        [Display(Name = "Reason for Recognition")]
+        [Required]
         public virtual values values { get; set; }
 
-        [Display (Name = "Reason for Recognition")]
         public string valueComment { get; set; }
+        
         //[Display (Name = "Recognition")]
         ////[StringLength(250)]
-        
+
         public Guid recognizerId { get; set; }
         [ForeignKey("recognizerId")]
         //[Display (Name = "Recognizer")]

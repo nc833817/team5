@@ -5,6 +5,7 @@ using System.Data.Entity.ModelConfiguration.Conventions;
 using System.Drawing;
 using System.Linq;
 using System.Web;
+using System.Web.Mvc;
 
 namespace team5_centric.Models
 {
@@ -41,6 +42,7 @@ namespace team5_centric.Models
         [Required(ErrorMessage = "Office Location is a required field")]
         [StringLength(20)]
         public string officeLocation { get; set; }
+       
 
         [Display(Name = "Position at Centic")]
         [Required(ErrorMessage = "Position at Centric is a required field")]
@@ -54,5 +56,12 @@ namespace team5_centric.Models
         public DateTime startDate { get; set; }
         public string avatar { get; set; }
         public ICollection<recognition> recognitions { get; set; }
+        
+        
+    }
+    public enum office
+    {
+        Male,
+        Female
     }
 }
