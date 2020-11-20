@@ -69,93 +69,59 @@
 
         <div class="form-group">
             @Html.LabelFor(model => model.avatar, "Profile Picture", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10 image-upload">
-                <img id="blah" src="~/Content/Avatars/@Model.avatar" height="400" />
-                <input id="UploadedImage" type="file" name="UploadedImage" onchange="return ValidateFileUpload()" />
+            <div class="col-md-10 image-upload custom-upload">
+                <div class="imgContain">
+                    <img id="profPic" class="cover" src="~/Content/Avatars/@Model.avatar" />
+                </div>
+                
+                <input id="UploadedImage" type="file" name="UploadedImage" class="customUploadField" onchange="return ValidateFileUpload()" />
 
                 <SCRIPT type="text/javascript">
+                    
                     function ValidateFileUpload() {
                         var fuData = document.getElementById('UploadedImage');
                         var FileUploadPath = fuData.value;
                         var file = document.getElementById("UploadedImage").files[0];
                         //To check if user upload any file
-                        if (FileUploadPath == '') {
-                            alert("Please upload an image");
-
-                        } else {
+                        
                             var Extension = FileUploadPath.substring(
                                 FileUploadPath.lastIndexOf('.') + 1).toLowerCase();
-
-                            //The file uploaded is an image
-
                             if (Extension == "gif" || Extension == "png" || Extension == "bmp"
                                 || Extension == "jpeg" || Extension == "jpg" && file.size < 2500000) {
 
-                                // To Display
                                 if (fuData.files && fuData.files[0]) {
                                     var reader = new FileReader();
 
                                     reader.onload = function (e) {
-                                        $('#blah').attr('src', e.target.result);
+                                        $('#profPic').attr('src', e.target.result);
                                     }
 
                                     reader.readAsDataURL(fuData.files[0]);
+                                    $('.enableOnInput').prop('disabled', false);
+                                    $("#imgError").text("");
                                 }
                                 
 
                             }
 
-                            //The file upload is NOT an image
                             else {
                                 
                                 alert("Image must be less than 2mb and a file type of GIF, PNG, JPG, JPEG and BMP.");
+                                $('.enableOnInput').prop('disabled', true);
+                                $("#imgError").text("Please upload a valid image file to save. Image must be less than 2mb and a file type of GIF, PNG, JPG, JPEG and BMP.");
                                 
                             }
                         }
-                    }
+                    
                 </SCRIPT>
-
-                @*<script type="text/javascript">
-            function validateImage() {
-                var formData = new FormData();
-                var file = document.getElementById("UploadedImage").files[0];
-                formData.append("Filedata", file);
-                var t = file.type.split('/').pop().toLowerCase();
-                if (t != "jpeg" && t != "jpg" && t != "png" && t != "bmp" && t != "gif") {
-                    alert('Please select a valid image file');
-                    document.getElementById("img").value = '';
-                    return false;
-                }
-                if (file.size > 1024000) {
-                    alert('Max Upload size is 1MB only');
-                    document.getElementById("img").value = '';
-                    return false;
-                }
-                return true;
-            }
-        </script>*@
-
-            </div>
+              </div>
         </div>
 
 
-
-        @*{
-            <h5>Upload Image for Profile</h5>
-            <input type="file" name="file" value="Browse" />
-            <br />
-            <input type="submit" value="Upload" />
-                    }
-
-            @if(ViewBag.UploadSuccess==true)
-                {
-            <span> Upload Completed Successfully</span>
-                }*@
-
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn btn-default" />
-
+                <input type="submit" value="Save" class="btn btn-default enableOnInput"  />
+                <div id="imgError"></div>
             </div>
         </div>
     </div>
