@@ -57,6 +57,7 @@ namespace team5_centric.Models
         public string avatar { get; set; }
         public ICollection<recognition> recognitions { get; set; }
         
+
         
     }
     public enum office
@@ -64,4 +65,6 @@ namespace team5_centric.Models
         Male,
         Female
     }
+   
+
 }
