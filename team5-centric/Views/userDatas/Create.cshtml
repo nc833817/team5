@@ -60,7 +60,50 @@
         <div class="form-group">
             @Html.LabelFor(model => model.avatar, "Profile Picture", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                 <input id="UploadedImage" type="file" name="UploadedImage" />
+                <img id="blah" src="~/Content/Avatars/blank-avatar.png" height="400" />
+                <input id="UploadedImage" type="file" name="UploadedImage" onchange="return ValidateFileUpload()" />
+
+                <SCRIPT type="text/javascript">
+                    function ValidateFileUpload() {
+                        var fuData = document.getElementById('UploadedImage');
+                        var FileUploadPath = fuData.value;
+                        var file = document.getElementById("UploadedImage").files[0];
+                        //To check if user upload any file
+                        if (FileUploadPath == '') {
+                            alert("Please upload an image");
+
+                        } else {
+                            var Extension = FileUploadPath.substring(
+                                FileUploadPath.lastIndexOf('.') + 1).toLowerCase();
+
+                            //The file uploaded is an image
+
+                            if (Extension == "gif" || Extension == "png" || Extension == "bmp"
+                                || Extension == "jpeg" || Extension == "jpg" && file.size < 2500000) {
+
+                                // To Display
+                                if (fuData.files && fuData.files[0]) {
+                                    var reader = new FileReader();
+
+                                    reader.onload = function (e) {
+                                        $('#blah').attr('src', e.target.result);
+                                    }
+
+                                    reader.readAsDataURL(fuData.files[0]);
+                                }
+
+
+                            }
+
+                            //The file upload is NOT an image
+                            else {
+
+                                alert("Image must be less than 2mb and a file type of GIF, PNG, JPG, JPEG and BMP.");
+
+                            }
+                        }
+                    }
+                </SCRIPT>
             </div>
         </div>
 
