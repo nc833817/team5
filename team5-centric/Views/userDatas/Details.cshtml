@@ -4,169 +4,189 @@
     ViewBag.Title = "Details";
 }
 
+<head>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
 
-<br />
-<div class="container profile">
-    <div class="col-md-3 profile-left">
-        <div class="profile-pic">
-            <img src="~/Content/Avatars/@Model.avatar" />
+        th, td {
+            text-align: left;
+            padding: 8px;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2
+        }
+
+        tr:hover {
+            background-color: #dbd9d5;
+        }
+    </style>
+
+    <br />
+    <div class="container profile">
+        <div class="col-md-3 profile-left">
+            <div class="profile-pic">
+                <img src="~/Content/Avatars/@Model.avatar" />
+            </div>
+            <dt>
+                @Html.DisplayNameFor(model => model.email)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.email)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.officeLocation)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.officeLocation)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.position)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.position)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.startDate)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.startDate)
+            </dd>
         </div>
-        <dt>
-            @Html.DisplayNameFor(model => model.email)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.email)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.officeLocation)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.officeLocation)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.position)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.position)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.startDate)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.startDate)
-        </dd>
-    </div>
-    <div class="col-md-9">
-        <h2 class="employee-name">@Html.DisplayFor(model => model.firstName) @Html.DisplayFor(model => model.lastName)</h2>
-        <dd>
-            @Html.ActionLink("Edit Profile", "Edit", new { id = Model.userId }) |
-            @Html.ActionLink("Back to List", "Index")
-        </dd>
-        <div class="col-md-6">
-            <h3>My Point Status</h3>
-            <div id="piechart" style="width: 100%; margin-top: -50px;">
+        <div class="col-md-9">
+            <h2 class="employee-name">@Html.DisplayFor(model => model.firstName) @Html.DisplayFor(model => model.lastName)</h2>
+            <dd>
+                @Html.ActionLink("Edit Profile", "Edit", new { id = Model.userId }) |
+                @Html.ActionLink("Back to List", "Index")
+            </dd>
+            <div class="col-md-6">
+                <h3>My Point Status</h3>
+                <div id="piechart" style="width: 100%; margin-top: -50px;">
 
 
-                <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+                    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 
-                <script type="text/javascript">
+                    <script type="text/javascript">
 
-                    // Load google charts
+                        // Load google charts
 
-                    google.charts.load('current', { 'packages': ['corechart'] });
+                        google.charts.load('current', { 'packages': ['corechart'] });
 
-                    google.charts.setOnLoadCallback(drawChart);
+                        google.charts.setOnLoadCallback(drawChart);
 
 
-                    // Draw the chart and set the chart values
+                        // Draw the chart and set the chart values
 
-                    function drawChart() {
+                        function drawChart() {
 
-                        var data = google.visualization.arrayToDataTable([
+                            var data = google.visualization.arrayToDataTable([
 
-                            ['Task', 'Points'],
+                                ['Task', 'Points'],
 
-                            ['Points to next reward', 10],
+                                ['Points to next reward', 10],
 
-                            ['Points earned', 6],
+                                ['Points earned', 6],
 
-                        ]);
+                            ]);
 
 
 
-                        // Optional; add a title and set the width and height of the chart
+                            // Optional; add a title and set the width and height of the chart
 
-                        var options = {
+                            var options = {
 
-                            width: 300,
-                            height: 300,
-                            pieHole: 0.5,
-                            legend: 'none',
-                            backgroundColor: 'none',
-                            colors: ['#29185a', '#e0e0e0']
-                        };
+                                width: 300,
+                                height: 300,
+                                pieHole: 0.5,
+                                legend: 'none',
+                                backgroundColor: 'none',
+                                colors: ['#29185a', '#e0e0e0']
+                            };
 
 
-                        // Display the chart inside the <div> element with id="piechart"
+                            // Display the chart inside the <div> element with id="piechart"
 
-                        var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+                            var chart = new google.visualization.PieChart(document.getElementById('piechart'));
 
-                        chart.draw(data, options);
+                            chart.draw(data, options);
 
-                    }
+                        }
 
-                </script>
+                    </script>
 
+                </div>
+            </div>
+            <div class="col-md-6 leaderboard">
+                <h3>Leaderboard</h3>
+
+                <table>
+                    <tr>
+                        <td class="lb_num">
+                            25
+                        </td>
+                        <td class="lb_name">
+                            Name Name1
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="rec_tbl">
+                <table style="width: 100%" )>
+
+                    <tr>
+
+                        <th>My Recognition</th>
+
+                        <th>My Values</th>
+
+                        <th>My Rewards</th>
+
+                    </tr>
+
+                    <tr>
+
+                        <td>Rec #1</td>
+
+                        <td>Value #2</td>
+
+                        <td>Reward #1</td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td>Rec #2</td>
+
+                        <td>Value #2</td>
+
+                        <td>Reward #2</td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td>Rec #3</td>
+
+                        <td>Value #3</td>
+
+                        <td>Reward #3</td>
+
+                    </tr>
+
+                </table>
             </div>
         </div>
-        <div class="col-md-6 leaderboard">
-            <h3>Leaderboard</h3>
-
-            <table>
-                <tr>
-                    <td class="lb_num">
-                        25
-                    </td>
-                    <td class="lb_name">
-                        Name Name1
-                    </td>
-                </tr>
-            </table>
-        </div>
-        <div class="rec_tbl">
-            <table style="width: 100%" )>
-
-                <tr>
-
-                    <th>My Recognition</th>
-
-                    <th>My Values</th>
-
-                    <th>My Rewards</th>
-
-                </tr>
-
-                <tr>
-
-                    <td>Rec #1</td>
-
-                    <td>Value #2</td>
-                                        
-                    <td>Reward #1</td>
-
-                </tr>
-
-                <tr>
-
-                    <td>Rec #2</td>
-
-                    <td>Value #2</td>
-
-                    <td>Reward #2</td>
-
-                </tr>
-
-                <tr>
-
-                    <td>Rec #3</td>
-
-                    <td>Value #3</td>
-
-                    <td>Reward #3</td>
-
-                </tr>
-
-            </table>
-        </div>
     </div>
-</div>
 
-<br />
-<br />
+    <br />
+    <br />
