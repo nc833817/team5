@@ -9,6 +9,7 @@ using System.Web.Mvc;
 
 namespace team5_centric.Models
 {
+
     public class userData
     {
         [Key]
@@ -35,6 +36,14 @@ namespace team5_centric.Models
             get
             {
                 return lastName + ", " + firstName;
+            }
+        }
+        [Display(Name = "Full Name Normal")]
+        public string fullNameNormal
+        {
+            get
+            {
+                return firstName + " " + lastName ;
             }
         }
 
@@ -65,6 +74,7 @@ namespace team5_centric.Models
         Male,
         Female
     }
+
    
 
 }

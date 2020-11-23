@@ -647,3 +647,60 @@ canvas {
 .cover {
     object-fit: cover;
 }
+.certificate {
+    max-width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 60px;
+    padding-bottom: 60px;
+    padding-left: 40px;
+    padding-right: 40px;
+    margin-top: 30px;
+    margin-bottom: 50px;
+    border: 3px solid #fbb722;
+}
+.cert-heading img{
+    max-width: 500px;
+    margin-bottom: 30px;
+}
+.cert-heading h2 {
+    font-family: 'Roboto', sans-serif;
+    font-size: 45px;
+    border-bottom: 2px solid #545454;
+    width: 80%;
+}
+.cert-heading h4 {
+    font-family: 'Roboto', sans-serif;
+    font-size: 18px;
+    margin-top: 40px;
+    margin-bottom: -10px;
+}
+.cert-heading h1 {
+    font-family: 'Roboto', sans-serif;
+    font-size: 54px;
+    border-bottom: 2px solid #545454;
+    width: 80%;
+}
+.recognizer{
+    text-align:center;
+}
+.cert-details {
+    max-width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 30px;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    border: 1px solid #bebebe;
+}
+    .cert-details h2 {
+        font-family: 'Roboto', sans-serif;
+        font-size: 16px;
+        font-weight: 900;
+        margin-top: 10px;
+    }
+    .cert-details p {
+        font-family: 'Roboto', sans-serif;
+        font-size: 16px;
+        
+    }

@@ -1,13 +1,32 @@
 ﻿@model team5_centric.Models.recognition
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = "Congratulations!";
 }
 
-<h2>Details</h2>
 
-<div>
-    <h4>recognition</h4>
+
+<div class="certificate">
+    <div class="cert-heading">
+        <center>
+            <img src="~/Content/img/cert-pic.png" />
+            <h2>@Html.DisplayFor(model => model.userDatas.fullNameNormal)</h2>
+            <h4>Is recognized for</h4>
+            <h1>@Html.DisplayFor(model => model.values.valueName)</h1>
+        </center>
+        <br />
+        <div class="recognizer">
+            <h3>By @Html.DisplayFor(model => model.recognizer.fullName)</h3>
+        </div>
+    </div>
+</div>
+<div class="cert-details">
+    <h2>Reason for Recognition</h2>
+    <p>" @Html.DisplayFor(model => model.valueComment) "</p>
+
+</div>
+@*<div>
+    
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -15,7 +34,7 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.recognizer.firstName)
+            
         </dd>
         
         <dt>
@@ -31,7 +50,7 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.userId)
+            
         </dd>
 
         <dt>
@@ -39,11 +58,11 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.valueComment)
+            
         </dd>
 
     </dl>
-</div>
+</div>*@
 <p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.recId }) |
     @Html.ActionLink("Back to List", "Index")
