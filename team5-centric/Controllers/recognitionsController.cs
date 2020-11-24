@@ -45,7 +45,17 @@ namespace team5_centric.Controllers
             ViewBag.userId = new SelectList(db.userDatas, "userId", "fullName");
             ViewBag.valueId = new SelectList(db.values, "valueId", "valueName");
             return View();
+
         }
+
+        //{
+
+        //    string userId = User.Identity.GetUserId();
+        //    SelectList user = new SelectList(db.userDetails, "SID", "fullName");
+        //    user = new SelectList(user.Where(x => x.Value != userId).ToList(), "Value", "Text");
+        //    ViewBag.recId = userData;
+
+        //}
 
         // POST: recognitions/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
