@@ -96,9 +96,9 @@
             <i class="glyphicon glyphicon-edit"></i>
             @Html.ActionLink("Edit", "Edit", new { id = item.userId }) |
             <i class="glyphicon glyphicon-list"></i>
-            @Html.ActionLink("Details", "Details", new { id = item.userId }) |
-            <i class="glyphicon glyphicon-trash"></i>
-            @Html.ActionLink("Delete", "Delete", new { id = item.userId })
+            @Html.ActionLink("Details", "Details", new { id = item.userId }) @*|*@
+            @*<i class="glyphicon glyphicon-trash"></i>
+            @Html.ActionLink("Delete", "Delete", new { id = item.userId })*@
         </td>
         </tr>
     }
