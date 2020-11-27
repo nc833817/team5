@@ -2,7 +2,7 @@
 
 body {
     padding-top: 50px;
-    padding-bottom: 20px;
+    padding-bottom: 0px;
 }
 
 /* Set padding to keep content from hitting the edges */
@@ -490,10 +490,17 @@ canvas {
 
 
 .footer-all {
-    background: #f5f5f5;
+    background: #313131;
     width: 100%;
     min-height: 100px;
     padding-top: 40px;
+    padding-bottom: 40px;
+    margin-top: 80px;
+    bottom: 0px;
+    display: block;
+}
+.footer-all p{
+    color:#f9f9f9;
 }
 
 .footer-container {
@@ -655,9 +662,10 @@ canvas {
     padding-bottom: 60px;
     padding-left: 40px;
     padding-right: 40px;
-    margin-top: 30px;
+    margin-top: -30px;
     margin-bottom: 50px;
-    border: 3px solid #fbb722;
+    border: 15px solid #fbb722;
+    background: #fff;
 }
 .cert-heading img{
     max-width: 500px;
@@ -692,6 +700,10 @@ canvas {
     margin-top: 50px;
     margin-bottom: 50px;
     border: 1px solid #bebebe;
+    background: #fff;
+    border-radius: 5px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
 }
     .cert-details h2 {
         font-family: 'Roboto', sans-serif;
@@ -704,3 +716,91 @@ canvas {
         font-size: 16px;
         
     }
+
+.social{
+
+}
+.social ul{
+    padding-left:0px!important;
+}
+.social ul li{
+    list-style:none;
+    display:inline-block;
+    margin:5px;
+    position:relative;
+}
+    .social img {
+        width: 30px;
+        opacity: 1;
+        transition: all 0.3s;
+    }
+    .social img:hover {
+        width: 30px;
+        opacity:0.7;
+        transition: all 0.3s;
+    }
+
+
+
+    .social ul li .tooltiptext {
+        visibility: hidden;
+        width: 120px;
+        background-color: black;
+        color: #fff;
+        text-align: center;
+        padding: 5px 0;
+        border-radius: 6px;
+        position: absolute;
+        z-index: 1;
+        transition: opacity 0.3s;
+        opacity: 0;
+        bottom: 100%;
+        left: 50%;
+        margin-left: -60px;
+    }
+
+
+    .social ul li:hover .tooltiptext {
+        visibility: visible;
+        transition: opacity 0.3s;
+        opacity:1;
+    }
+.share-btn {
+    display: inline-block;
+    margin: 5px;
+}
+.fb-share a {
+    background: #2d88ff;
+    color: #fff !important;
+    text-decoration: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+}
+.twitter-share a {
+    background: #1da1f2;
+    color: #fff !important;
+    text-decoration: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+}
+.linkedin-share a {
+    background: #0073b1;
+    color: #fff !important;
+    text-decoration: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+}
+.share-buttons {
+    max-width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 30px;
+    margin-bottom: 20px;
+    
+}

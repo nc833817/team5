@@ -1,7 +1,9 @@
 ﻿@model team5_centric.Models.recognition
 
 @{
-    ViewBag.Title = "Congratulations!";
+
+    ViewBag.Title = "Congratulation, " + @Model.userDatas.firstName + "!";
+    Layout = "~/Views/Shared/_recognition_layout.cshtml";
 }
 
 
@@ -25,7 +27,34 @@
     <p>" @Html.DisplayFor(model => model.valueComment) "</p>
 
 </div>
-@*<div>
+
+<script>
+    window.onload = function () {
+        fb_share.href = 'http://www.facebook.com/share.php?u=' + encodeURIComponent(location.href);
+        twit_share.href = 'https://twitter.com/share?url=' + encodeURIComponent(location.href);
+        linkedin_share.href = 'https://www.linkedin.com/sharing/share-offsite/?url=' + encodeURIComponent(location.href);
+    }  
+</script>
+<center>
+    <div class="share-buttons">
+        <div class="share-btn fb-share">
+            <a href="" target="_blank" id="fb_share">Share on Facebook</a>
+        </div>
+        <div class="share-btn twitter-share">
+            <a href="" target="_blank" id="twit_share">Share on Twitter</a>
+        </div>
+        <div class="share-btn linkedin-share">
+            <a href="" target="_blank" id="linkedin_share">Share on LinkedIn</a>
+        </div>
+    </div>
+    <br />
+    <a href="http://aspnet.cob.ohio.edu/mis4200Team5" style="color:white!important">Back to Home</a>
+</center>
+
+
+
+    
+    @*<div>
     
     <hr />
     <dl class="dl-horizontal">
@@ -63,7 +92,7 @@
 
     </dl>
 </div>*@
-<p>
+@*<p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.recId }) |
     @Html.ActionLink("Back to List", "Index")
-</p>
+</p>*@

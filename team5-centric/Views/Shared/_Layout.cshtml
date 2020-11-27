@@ -8,9 +8,13 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
-
+    <!—- ShareThis BEGIN -—>
+    <script type="text/javascript" src="https://platform-api.sharethis.com/js/sharethis.js#property=5fc126941701980012ad86d3&product=sticky-share-buttons" async="async"></script>
+    <!—- ShareThis END -—>
 </head>
 <body>
+    <div id="fb-root"></div>
+    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v9.0" nonce="6AFPzjRX"></script>
     <div class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
@@ -26,20 +30,20 @@
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
 
                     @*<li class="dropdown">
-                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                            User Data
-                            <span class="caret"></span>
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li>@Html.ActionLink("Employees", "Index", "userDatas")</li>
-                            <li>@Html.ActionLink("Recognitions", "Index", "recognitions")</li>
-                        </ul>
-                    </li>*@
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                                User Data
+                                <span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li>@Html.ActionLink("Employees", "Index", "userDatas")</li>
+                                <li>@Html.ActionLink("Recognitions", "Index", "recognitions")</li>
+                            </ul>
+                        </li>*@
 
                     <li>@Html.ActionLink("Employees", "Index", "userDatas")</li>
                     <li>@Html.ActionLink("Core Values", "Index", "values")</li>
                     <li>@Html.ActionLink("Recognitions", "Index", "recognitions")</li>
-            
+
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>
@@ -47,16 +51,42 @@
     </div>
     <div class="container body-content">
         @RenderBody()
-        <footer>
-            <div class="footer-all">
-                <div class="footer-container">
-                    <center><p>&copy; @DateTime.Now.Year | Centric Consulting</p></center>
-                </div>
-            </div>
 
-        </footer>
     </div>
+    <footer>
+        <div class="footer-all">
+            <div class="footer-container">
+                <div class="social">
+                    <center>
+                        <ul>
+                            <li>
+                                <a href="https://www.linkedin.com/company/centric-consulting/"><img src="~/Content/img/Linkedin.png" /></a>
+                                <span class="tooltiptext">LinkedIn</span>
+                            </li>
+                            <li>
+                                <a href="https://www.facebook.com/CentricConsultingNational"><img src="~/Content/img/Facebook.png" /></a>
+                                <span class="tooltiptext">Facebook</span>
+                            </li>
+                            <li>
+                                <a href="https://twitter.com/centric"><img src="~/Content/img/Twitter.png" /></a>
+                                <span class="tooltiptext">Twitter</span>
+                            </li>
+                            <li>
+                                <a href="https://www.instagram.com/centricconsulting/"><img src="~/Content/img/Instagram.png" /></a>
+                                <span class="tooltiptext">Instagram</span>
+                            </li>
+                            <li>
+                                <a href="https://www.youtube.com/channel/UCFmtoIKH1ijwpGpiJBxl4dw"><img src="~/Content/img/Youtube.png" /></a>
+                                <span class="tooltiptext">YouTube</span>
+                            </li>
+                        </ul>
+                    </center>
+                </div>
+                <center><p>&copy; @DateTime.Now.Year | Centric Consulting</p></center>
+            </div>
+        </div>
 
+    </footer>
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
