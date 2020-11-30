@@ -17,6 +17,7 @@ namespace team5_centric.Controllers
         private centricContext db = new centricContext();
 
         // GET: recognitions
+        [Authorize]
         public ActionResult Index()
         {
             var recognitions = db.recognitions.Include(r => r.recognizer).Include(r => r.values);
@@ -39,6 +40,7 @@ namespace team5_centric.Controllers
         }
 
         // GET: recognitions/Create
+        [Authorize]
         public ActionResult Create()
         {
             ViewBag.recognizerId = new SelectList(db.userDatas, "userId", "firstName");
@@ -75,6 +77,44 @@ namespace team5_centric.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
+            //if (ModelState.IsValid)
+            //{
+            //    var recognizerFirstName = Guid.TryParse(User.Identity.GetUserId(), out userData.firstName);
+            //    var recognizerLastName = Guid.TryParse(User.Identity.GetUserId(), out userData.lastName);
+            //    var recipientFirstName;
+            //    var recipientLastName;
+            //    var recipientEmail;
+            //    var reasonForRecognition;
+
+            //    var message = "Hello " + recipientFirstName + " " + recipientLastName + ", \n\nCongratulations! ";
+            //    message += "You have been recognized by " + recognizerFirstName + " " + recognizerLastName + " for exemplifying one of Centric's core values.";
+            //    message += recognizerFirstName + " recognized you for demonstrating" + reasonForRecognition + " in the workplace.";
+            //    message += "\n\nOn behalf of Centric,\nThank you for all your hard work!";
+
+            //    MailMessage myMessage = new MailMessage();
+            //    MailAddress from = newMailAddress("centricvalues@gmail.com", "SysAdmin");
+            //    myMessage.From = from;
+            //    myMessage.To.Add(recipientEmail);
+            //    myMessage.Subject = "Centric Core Values Recognition";
+            //    myMessage.Body = message;
+            //    try
+            //    {
+            //        SmtpClient smtp = new SmtpClient();
+            //        smtp.Host = smtp.gmail.com;
+            //        smtp.Port = 587;
+            //        smtp.UseDefaultCredentials = false;
+            //        smtp.Credentials = new System.Net.NetworkCredential("GmailUserAcnt", "Password");
+            //        smtp.EnableSsl = true;
+            //        smtp.Send(myMessage);
+            //        TempData["mailError"] = "";
+            //    }
+            //    catch (Exception ex)
+            //    {
+            //        // (not sure if needed in our case) -> "this captures an Execption and allows you to display the message in the View"
+            //        TempData["mailError"] = ex.Message;
+            //        return View("mailError");
+            //    }   
+            //}
 
             ViewBag.recognizerId = new SelectList(db.userDatas, "userId", "firstName", recognition.recognizerId);
             ViewBag.valueId = new SelectList(db.values, "valueId", "valueName", recognition.valueId);
@@ -82,6 +122,7 @@ namespace team5_centric.Controllers
         }
 
         // GET: recognitions/Edit/5
+        [Authorize]
         public ActionResult Edit(Guid? id)
         {
             if (id == null)
@@ -117,6 +158,7 @@ namespace team5_centric.Controllers
         }
 
         // GET: recognitions/Delete/5
+        [Authorize]
         public ActionResult Delete(Guid? id)
         {
             if (id == null)
