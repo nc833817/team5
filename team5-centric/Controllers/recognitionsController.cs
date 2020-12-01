@@ -5,6 +5,7 @@ using System.Data;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
+using System.Net.Mail;
 using System.Web;
 using System.Web.Mvc;
 using team5_centric.DAL;
@@ -53,7 +54,7 @@ namespace team5_centric.Controllers
         //{
 
         //    string userId = User.Identity.GetUserId();
-        //    SelectList user = new SelectList(db.userDetails, "SID", "fullName");
+        //    SelectList user = new SelectList(db.userDetails, "userId", "fullName");
         //    user = new SelectList(user.Where(x => x.Value != userId).ToList(), "Value", "Text");
         //    ViewBag.recId = userData;
 
@@ -92,7 +93,7 @@ namespace team5_centric.Controllers
             //    message += "\n\nOn behalf of Centric,\nThank you for all your hard work!";
 
             //    MailMessage myMessage = new MailMessage();
-            //    MailAddress from = newMailAddress("centricvalues@gmail.com", "SysAdmin");
+            //    MailAddress from = new MailAddress("systemcentricvalues@gmail.com", "Values2020!");
             //    myMessage.From = from;
             //    myMessage.To.Add(recipientEmail);
             //    myMessage.Subject = "Centric Core Values Recognition";
@@ -100,10 +101,10 @@ namespace team5_centric.Controllers
             //    try
             //    {
             //        SmtpClient smtp = new SmtpClient();
-            //        smtp.Host = smtp.gmail.com;
+            //        smtp.Host = "smtp.gmail.com";
             //        smtp.Port = 587;
             //        smtp.UseDefaultCredentials = false;
-            //        smtp.Credentials = new System.Net.NetworkCredential("GmailUserAcnt", "Password");
+            //        smtp.Credentials = new System.Net.NetworkCredential("systemcentricvalues", "Values2020!");
             //        smtp.EnableSsl = true;
             //        smtp.Send(myMessage);
             //        TempData["mailError"] = "";
@@ -113,7 +114,7 @@ namespace team5_centric.Controllers
             //        // (not sure if needed in our case) -> "this captures an Execption and allows you to display the message in the View"
             //        TempData["mailError"] = ex.Message;
             //        return View("mailError");
-            //    }   
+            //    }
             //}
 
             ViewBag.recognizerId = new SelectList(db.userDatas, "userId", "firstName", recognition.recognizerId);
