@@ -93,7 +93,7 @@ namespace team5_centric.Controllers
             //    message += "\n\nOn behalf of Centric,\nThank you for all your hard work!";
 
             //    MailMessage myMessage = new MailMessage();
-            //    MailAddress from = new MailAddress("systemcentricvalues@gmail.com", "Values2020!");
+            //    MailAddress from = new MailAddress("systemcentricvalues@gmail.com", "Centric Values System");
             //    myMessage.From = from;
             //    myMessage.To.Add(recipientEmail);
             //    myMessage.Subject = "Centric Core Values Recognition";
@@ -136,6 +136,7 @@ namespace team5_centric.Controllers
                 return HttpNotFound();
             }
             ViewBag.recognizerId = new SelectList(db.userDatas, "userId", "firstName", recognition.recognizerId);
+            ViewBag.userId = new SelectList(db.userDatas, "userId", "fullName");
             ViewBag.valueId = new SelectList(db.values, "valueId", "valueName", recognition.valueId);
             return View(recognition);
         }
@@ -154,6 +155,7 @@ namespace team5_centric.Controllers
                 return RedirectToAction("Index");
             }
             ViewBag.recognizerId = new SelectList(db.userDatas, "userId", "firstName", recognition.recognizerId);
+            ViewBag.userId = new SelectList(db.userDatas, "userId", "fullName");
             ViewBag.valueId = new SelectList(db.values, "valueId", "valueName", recognition.valueId);
             return View(recognition);
         }

@@ -94,7 +94,7 @@
     </table>
 </div>
 
-<div
+<div>
 
 
 </div>
@@ -102,9 +102,10 @@
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
+<h3>Recent Employee Recognitions</h3>
 <table class="table">
     <tr>
-        <h3>Recent Employee Recognition</h3>
+        
 
         <th>
             Submitted By
@@ -143,12 +144,12 @@
                 @Html.Raw(System.Web.HttpUtility.HtmlDecode(valueComment))
             </td>
             <td>
-                @*<i class="glyphicon glyphicon-edit"></i>
-                @Html.ActionLink("Edit", "Edit", new { id = item.recId }) |*@
+                <i class="glyphicon glyphicon-edit"></i>
+                @Html.ActionLink("Edit", "Edit", new { id = item.recId }) |
                 <i class="glyphicon glyphicon-list"></i>
                 @Html.ActionLink("Details", "Details", new { id = item.recId })
-                @*<i class="glyphicon glyphicon-trash"></i>
-                @Html.ActionLink("Delete", "Delete", new { id = item.recId })*@
+                <i class="glyphicon glyphicon-trash"></i>
+                @Html.ActionLink("Delete", "Delete", new { id = item.recId })
             </td>
         </tr>
     }

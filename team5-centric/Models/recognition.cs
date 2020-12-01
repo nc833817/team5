@@ -30,6 +30,8 @@ namespace team5_centric.Models
         [Required]
         public virtual values values { get; set; }
 
+        [Display(Name = "Reason for Recognition")]
+        [Required]
         public string valueComment { get; set; }
         
         //[Display (Name = "Recognition")]
