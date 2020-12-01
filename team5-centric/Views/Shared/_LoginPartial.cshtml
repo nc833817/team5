@@ -19,7 +19,12 @@
             if(registeredUser == null)
             {
                 userName = "";
-                profilePic = "";
+                profilePic = "blank-avatar.png";
+            }
+            if(profilePic == "")
+            {
+                userName = registeredUser.firstName;
+                profilePic = "blank-avatar.png";
             }
             else
             {

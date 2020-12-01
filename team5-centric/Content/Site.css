@@ -804,3 +804,7 @@ canvas {
     margin-bottom: 20px;
     
 }
+
+.mce-notification {
+    display: none !important
+}
