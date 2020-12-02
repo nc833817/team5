@@ -58,8 +58,30 @@ namespace team5_centric.Controllers
             {
                 return HttpNotFound();
             }
-            
-            
+          
+           var rec = db.recognitions.Where(r => r.userId == id);
+            var overall = db.recognitions.Count();
+            var recList = rec.ToList();
+            ViewBag.rec = recList;
+            var totalCnt = recList.Count(); //counts all the recognitions for that person
+            var stewardshipCnt = recList.Where(r => r.values.valueName == "Stewardship").Count();
+            var cultureCnt = recList.Where(r => r.values.valueName == "Culture").Count();
+            var innovationCnt = recList.Where(r => r.values.valueName == "Innovation").Count();
+            var balanceCnt = recList.Where(r => r.values.valueName == "Balance").Count();
+            var deliveryCnt = recList.Where(r => r.values.valueName == "Delivery Excellence").Count();
+            var greatergoodCnt = recList.Where(r => r.values.valueName == "Greater Good").Count();
+            var integrityCnt = recList.Where(r => r.values.valueName == "Integrity and Openness").Count();
+
+            ViewBag.overall = overall;
+            ViewBag.total = totalCnt;
+            ViewBag.stewardshipCnt = stewardshipCnt;
+            ViewBag.cultureCnt = cultureCnt;
+            ViewBag.innovationCnt = innovationCnt;
+            ViewBag.balanceCnt = balanceCnt;
+            ViewBag.deliveryCnt = deliveryCnt;
+            ViewBag.greatergoodCnt = greatergoodCnt;
+            ViewBag.integrityCnt = integrityCnt;
+
             return View(userData);
         }
 
@@ -316,6 +338,7 @@ namespace team5_centric.Controllers
                     }
             }
                 return View();
+
             }
         
     }

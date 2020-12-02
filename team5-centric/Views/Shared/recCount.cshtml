@@ -1,0 +1,120 @@
+﻿
+@{
+    var overall = ViewBag.overall;
+    var total = ViewBag.total;
+    var stewardship = ViewBag.stewardshipCnt;
+    var culture = ViewBag.cultureCnt;
+    var innovation = ViewBag.innovationCnt;
+    var balance = ViewBag.balanceCnt;
+    var delivery = ViewBag.deliveryCnt;
+    var greaterGood = ViewBag.greatergoodCnt;
+    var integrity = ViewBag.integrityCnt;
+
+
+    <div class="col-md-6 cool_box box-left">
+        <div class="rec_table">
+            <div class="rec_head">
+                Recognition Counts
+            </div>
+        <table>
+            <tr>
+                <td class="td_lbl">
+                    Stewardship
+                </td>
+                <td class="td_perc">
+                    @stewardship
+                </td>
+            </tr>
+            <tr>
+                <td class="td_lbl">
+                    Culture
+                </td>
+                <td class="td_perc">
+                    @culture
+                </td>
+            </tr>
+            <tr>
+                <td class="td_lbl">
+                    Innovation
+                </td>
+                <td class="td_perc">
+                    @innovation
+                </td>
+            </tr>
+            <tr>
+                <td class="td_lbl">
+                    Balance
+                </td>
+                <td class="td_perc">
+                    @balance
+                </td>
+            </tr>
+            <tr>
+                <td class="td_lbl">
+                    Delivery Excellence
+                </td>
+                <td class="td_perc">
+                    @delivery
+                </td>
+            </tr>
+            <tr>
+                <td class="td_lbl">
+                    Greater Good
+                </td>
+                <td class="td_perc">
+                    @greaterGood
+                </td>
+            </tr>
+            <tr>
+                <td class="td_lbl">
+                    Integrity and Openness
+                </td>
+                <td class="td_perc">
+                    @integrity
+                </td>
+            </tr>
+            <tr>
+                <td class="td_lbl">
+                    Total Recieved
+                </td>
+                <td class="td_perc">
+                    @total
+                </td>
+            </tr>
+        </table>
+            </div>
+    </div>
+    <div class="col-md-6 cool_box">
+        <div class="count_contain">
+            <div class="rec_head">
+                Percent of Total Given
+            </div>
+            <div class="text" id="text">0%</div>
+            <div class="bar-container">
+                <div class="bar" id="bar"></div>
+            </div>
+            <div class="barhelper">
+                The percent of recognitions the current user has recieved out of the total recognitions given.
+            </div>
+        </div>
+        
+
+        <script>
+          var bar = document.getElementById('bar');
+          var txt = document.getElementById('text');
+          var oneHundred = @overall;
+          var recieved = @total;
+          var count = Math.round((recieved / oneHundred) * 100);
+          bar.style.width = count + '%';
+          txt.innerHTML = count + '%';
+        </script>
+    </div>
+
+
+
+
+
+
+
+
+}

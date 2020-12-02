@@ -278,6 +278,7 @@
     <Content Include="Views\userDatas\notAuthorized.cshtml" />
     <Content Include="Views\Shared\_recognition_layout.cshtml" />
     <Content Include="Views\recognitions\mailError.cshtml" />
+    <Content Include="Views\Shared\recCount.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
