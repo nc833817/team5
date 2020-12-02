@@ -69,55 +69,56 @@ namespace team5_centric.Controllers
         {
             if (ModelState.IsValid)
             {
-                
+
                 recognition.recId = Guid.NewGuid();
                 Guid memberID;
                 Guid.TryParse(User.Identity.GetUserId(), out memberID);
                 recognition.recognizerId = memberID;
                 db.recognitions.Add(recognition);
                 db.SaveChanges();
+
+                //var recognizerFirstName = recognition.recognizer.firstName;
+                //var recognizerLastName = recognition.recognizer.lastName;
+                //var recipientFirstName = recognition.userDatas.firstName;
+                //var recipientLastName = recognition.userDatas.lastName;
+                //var recipientEmail = recognition.userDatas.email;
+                //var valueName = recognition.values.valueName;
+                //var valueDescription = recognition.values.valueDescription;
+                //var recgonitionComment = recognition.valueComment;
+
+                //var message = "Hello " + recipientFirstName + " " + recipientLastName + ", \n\nCongratulations! ";
+                //message += "You have been recognized by " + recognizerFirstName + " " + recognizerLastName + " for exemplifying one of Centric's core values.";
+                //message += recognizerFirstName + " recognized you for demonstrating" + valueName + " in the workplace.";
+                //message += "\n\nOn behalf of Centric,\nThank you for all your hard work!";
+
+                //MailMessage myMessage = new MailMessage();
+                //MailAddress from = new MailAddress("systemcentricvalues@gmail.com", "Centric Values System");
+                //myMessage.From = from;
+                //myMessage.To.Add(recipientEmail);
+                //myMessage.Subject = "Centric Core Values Recognition";
+                //myMessage.Body = message;
+                //try
+                //{
+                //    SmtpClient smtp = new SmtpClient();
+                //    smtp.Host = "smtp.gmail.com";
+                //    smtp.Port = 587;
+                //    smtp.UseDefaultCredentials = false;
+                //    smtp.Credentials = new System.Net.NetworkCredential("systemcentricvalues", "Values2020!");
+                //    smtp.EnableSsl = true;
+                //    smtp.Send(myMessage);
+                //    TempData["mailError"] = "";
+                //}
+                //catch (Exception ex)
+                //{
+                //    // (not sure if needed in our case) -> "this captures an Execption and allows you to display the message in the View"
+                //    TempData["mailError"] = ex.Message;
+                //    return View("mailError");
+                //}
                 return RedirectToAction("Index");
             }
-            //if (ModelState.IsValid)
-            //{
-            //    var recognizerFirstName = Guid.TryParse(User.Identity.GetUserId(), out userData.firstName);
-            //    var recognizerLastName = Guid.TryParse(User.Identity.GetUserId(), out userData.lastName);
-            //    var recipientFirstName;
-            //    var recipientLastName;
-            //    var recipientEmail;
-            //    var reasonForRecognition;
-
-            //    var message = "Hello " + recipientFirstName + " " + recipientLastName + ", \n\nCongratulations! ";
-            //    message += "You have been recognized by " + recognizerFirstName + " " + recognizerLastName + " for exemplifying one of Centric's core values.";
-            //    message += recognizerFirstName + " recognized you for demonstrating" + reasonForRecognition + " in the workplace.";
-            //    message += "\n\nOn behalf of Centric,\nThank you for all your hard work!";
-
-            //    MailMessage myMessage = new MailMessage();
-            //    MailAddress from = new MailAddress("systemcentricvalues@gmail.com", "Centric Values System");
-            //    myMessage.From = from;
-            //    myMessage.To.Add(recipientEmail);
-            //    myMessage.Subject = "Centric Core Values Recognition";
-            //    myMessage.Body = message;
-            //    try
-            //    {
-            //        SmtpClient smtp = new SmtpClient();
-            //        smtp.Host = "smtp.gmail.com";
-            //        smtp.Port = 587;
-            //        smtp.UseDefaultCredentials = false;
-            //        smtp.Credentials = new System.Net.NetworkCredential("systemcentricvalues", "Values2020!");
-            //        smtp.EnableSsl = true;
-            //        smtp.Send(myMessage);
-            //        TempData["mailError"] = "";
-            //    }
-            //    catch (Exception ex)
-            //    {
-            //        // (not sure if needed in our case) -> "this captures an Execption and allows you to display the message in the View"
-            //        TempData["mailError"] = ex.Message;
-            //        return View("mailError");
-            //    }
-            //}
 
             ViewBag.recognizerId = new SelectList(db.userDatas, "userId", "firstName", recognition.recognizerId);
+            ViewBag.userId = new SelectList(db.userDatas, "userId", "fullName");
             ViewBag.valueId = new SelectList(db.values, "valueId", "valueName", recognition.valueId);
             return View(recognition);
         }

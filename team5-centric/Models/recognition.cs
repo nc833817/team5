@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
+using System.Web.Mvc;
 using team5_centric.Controllers;
 
 namespace team5_centric.Models
@@ -26,12 +27,12 @@ namespace team5_centric.Models
         public Guid valueId { get; set; }
 
 
-        [Display(Name = "Reason for Recognition")]
-        [Required]
+
         public virtual values values { get; set; }
 
         [Display(Name = "Reason for Recognition")]
         [Required]
+        [AllowHtml] 
         public string valueComment { get; set; }
         
         //[Display (Name = "Recognition")]
