@@ -46,7 +46,24 @@
         <div class="form-group">
             @Html.LabelFor(model => model.officeLocation, "Office Location", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.officeLocation, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.DropDownListFor(model => model.officeLocation, new List<SelectListItem>
+            {
+               new SelectListItem{ Text="Boston", Value = "Boston" },
+               new SelectListItem{ Text="Charlotte", Value = "Charlotte" },
+               new SelectListItem{ Text="Chicago", Value = "Chicago" },
+               new SelectListItem{ Text="Cincinnati", Value = "Cincinnati" },
+               new SelectListItem{ Text="Cleveland", Value = "Cleveland" },
+               new SelectListItem{ Text="Columbus", Value = "Columbus" },
+               new SelectListItem{ Text="India", Value = "India" },
+               new SelectListItem{ Text="Indianapolis", Value = "Indianapolis" },
+               new SelectListItem{ Text="Louisville", Value = "Louisville" },
+               new SelectListItem{ Text="Miami", Value = "Miami" },
+               new SelectListItem{ Text="Seattle", Value = "Seattle" },
+               new SelectListItem{ Text="St. Louis", Value = "St. Louis" },
+               new SelectListItem{ Text="Tampa", Value = "Tampa" },
+               new SelectListItem{ Text="Virtual/Other", Value = "Virtual/Other" },
+            }, "Please Select", new { @class = "form-control" })
+                @*@Html.EditorFor(model => model.officeLocation, new { htmlAttributes = new { @class = "form-control" } })*@
                 @Html.ValidationMessageFor(model => model.officeLocation, "", new { @class = "text-danger" })
             </div>
         </div>
