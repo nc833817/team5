@@ -198,6 +198,7 @@
     <Content Include="Content\fav.png" />
     <Content Include="Content\img\cert-meta.jpg" />
     <Content Include="Content\img\cert-pic.png" />
+    <Content Include="Content\img\home-bg-2.jpg" />
     <Content Include="Content\img\home-bg.jpg" />
     <Content Include="Content\img\logo-sm.png" />
     <Content Include="favicon.ico" />
