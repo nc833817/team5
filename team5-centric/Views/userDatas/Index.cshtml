@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<team5_centric.Models.userData>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Employee Directory";
 }
 <head>
     <style>
@@ -25,7 +25,7 @@
     </style>
 </head>
 
-<h2>Employees</h2>
+<h2>Employee Directory</h2>
 
 <div class="form-horizontal">
     <div class="form-group">
@@ -93,10 +93,10 @@
                     <img src="@Url.Content("~/Content/Avatars/")@Model.avatar" height="30" />
                 </td>*@
         <td>
-            <i class="glyphicon glyphicon-edit"></i>
-            @Html.ActionLink("Edit", "Edit", new { id = item.userId }) |
+            @*<i class="glyphicon glyphicon-edit"></i>
+            @Html.ActionLink("Edit", "Edit", new { id = item.userId }) |*@
             <i class="glyphicon glyphicon-list"></i>
-            @Html.ActionLink("Details", "Details", new { id = item.userId }) @*|*@
+            @Html.ActionLink("View Profile", "Details", new { id = item.userId }) @*|*@
             @*<i class="glyphicon glyphicon-trash"></i>
             @Html.ActionLink("Delete", "Delete", new { id = item.userId })*@
         </td>

@@ -24,27 +24,43 @@
 </div>
 <div class="cert-details">
     <h2>Reason for Recognition</h2>
-    <p>" @Html.DisplayFor(model => model.valueComment) "</p>
+    <p>
+        @*"@Html.DisplayFor(model => model.valueComment)"*@
+
+        @{
+            var valueComment = Model.valueComment;
+        }
+        @Html.Raw(System.Web.HttpUtility.HtmlDecode(valueComment))
+    </p>
 
 </div>
 
 <script>
-    window.onload = function () {
-        fb_share.href = 'http://www.facebook.com/share.php?u=' + encodeURIComponent(location.href);
-        twit_share.href = 'https://twitter.com/share?url=' + encodeURIComponent(location.href);
-        linkedin_share.href = 'https://www.linkedin.com/sharing/share-offsite/?url=' + encodeURIComponent(location.href);
-    }  
+    //window.onload = function () {
+    //    fb_share.href = 'http://www.facebook.com/share.php?u=' + encodeURIComponent(location.href);
+    //    twit_share.href = 'https://twitter.com/share?url=' + encodeURIComponent(location.href);
+    //    linkedin_share.href = 'https://www.linkedin.com/sharing/share-offsite/?url=' + encodeURIComponent(location.href);
+    //}  
+    function fbShare() {
+        window.open('http://www.facebook.com/share.php?u=' + encodeURIComponent(location.href));
+    }
+    function twitterShare() {
+        window.open('https://twitter.com/share?url=' + encodeURIComponent(location.href));
+    }
+    function linkedinShare() {
+        window.open('https://www.linkedin.com/sharing/share-offsite/?url=' + encodeURIComponent(location.href));
+    }
 </script>
 <center>
     <div class="share-buttons">
         <div class="share-btn fb-share">
-            <a href="" target="_blank" id="fb_share">Share on Facebook</a>
+            <a href="" onclick="fbShare()" id="fb_share">Share on Facebook</a>
         </div>
         <div class="share-btn twitter-share">
-            <a href="" target="_blank" id="twit_share">Share on Twitter</a>
+            <a href="" onclick="twitterShare()" id="twit_share">Share on Twitter</a>
         </div>
         <div class="share-btn linkedin-share">
-            <a href="" target="_blank" id="linkedin_share">Share on LinkedIn</a>
+            <a href="" onclick="linkedinShare()" id="linkedin_share">Share on LinkedIn</a>
         </div>
     </div>
     <br />
